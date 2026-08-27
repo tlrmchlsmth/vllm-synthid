@@ -1,0 +1,15 @@
+{
+  "default_profile": "provider",
+  "profiles": {
+    "provider": {
+      "keys": [654, 400, 836, 123, 340, 443, 597, 160]
+    },
+    "tenant-a": {
+      "keys": [91, 782, 633, 204, 515, 326, 47, 918],
+      "ngram_len": 5,
+      "sampling_table_size": 65536,
+      "sampling_table_seed": 0,
+      "context_history_size": 1024
+    }
+  }
+}
