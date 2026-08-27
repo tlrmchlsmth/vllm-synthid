@@ -18,6 +18,11 @@ behavior. Load the processor explicitly only for servers that need SynthID.
 This avoids vLLM treating every process in a shared environment as having an
 active custom logits processor.
 
+For immutable cluster deployments, `Containerfile` layers the plugin onto a
+digest-pinned vLLM image. Supply `VLLM_IMAGE` as a build argument; the resulting
+image still requires explicit `--logits-processors` and `SYNTHID_CONFIG` to
+enable watermarking.
+
 When the processor is explicitly loaded but `SYNTHID_CONFIG` is absent, it is
 disabled and does not change generation. A request that selects a profile in
 that state is rejected rather than silently generating unwatermarked text.
