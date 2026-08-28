@@ -1,0 +1,151 @@
+{
+  "vllm": {
+    "image": "quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be",
+    "model": "google/gemma-4-26B-A4B-it",
+    "revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+    "tokenizer": null,
+    "tokenizer_revision": null,
+    "dtype": "auto",
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "enable_expert_parallel": false,
+    "max_model_len": 16384,
+    "trust_remote_code": false,
+    "engine_args": {
+      "speculative_config": {
+        "method": "mtp",
+        "model": "google/gemma-4-26B-A4B-it-assistant",
+        "num_speculative_tokens": 3
+      }
+    }
+  },
+  "runtime": {
+    "profile": null,
+    "vllm_env": null,
+    "vllm_env_revision": null
+  },
+  "target": {
+    "accelerator": "h200",
+    "queue": "synthid-h200",
+    "gpu_count": 1,
+    "node_count": 1,
+    "gpus_per_node": 1,
+    "cpu": "16",
+    "memory": "128Gi",
+    "active_deadline_seconds": 7200,
+    "workload_kind": "job"
+  },
+  "benchmark": {
+    "workloads": {
+      "decode": {
+        "enabled": true,
+        "batch_sizes": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32
+        ],
+        "previous_tokens": [
+          {
+            "tokens": 512,
+            "weight": 1.0
+          },
+          {
+            "tokens": 2048,
+            "weight": 2.0
+          },
+          {
+            "tokens": 8192,
+            "weight": 1.0
+          }
+        ]
+      },
+      "prefill": {
+        "enabled": true,
+        "token_counts": [
+          512,
+          1024,
+          2048,
+          4096,
+          8192
+        ],
+        "batch_size": 1,
+        "previous_tokens": [
+          {
+            "tokens": 0,
+            "weight": 1.0
+          }
+        ]
+      },
+      "mixed": {
+        "enabled": false,
+        "prefill_requests": 1,
+        "prefill_isl": 2048,
+        "prefill_previous_tokens": [
+          {
+            "tokens": 0,
+            "weight": 1.0
+          }
+        ],
+        "decode_batch_sizes": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32
+        ],
+        "decode_previous_tokens": [
+          {
+            "tokens": 2048,
+            "weight": 1.0
+          }
+        ]
+      }
+    },
+    "measurement": {
+      "warmup_iterations": 3,
+      "iterations": 10
+    },
+    "profiles": {
+      "enabled": true,
+      "iterations": 1,
+      "with_stack": false,
+      "record_shapes": false,
+      "profile_memory": false,
+      "trace_compaction": {
+        "enabled": true,
+        "skip_top_levels": 0,
+        "prune_host_prefixes": [
+          "vllm_forward_bench/",
+          "vllm-forward-bench-worker"
+        ],
+        "max_depth": 6,
+        "max_children": 32,
+        "retain_raw": false
+      },
+      "cases": [
+        "decode",
+        "prefill"
+      ]
+    }
+  },
+  "input": {
+    "texts": [
+      "The observatory opened before sunrise while engineers checked each instrument and prepared a reproducible measurement."
+    ],
+    "seed": 0
+  },
+  "labels": {
+    "case": "gemma4-mtp3-mrv2-sync",
+    "sweep": "forward-bench-runtime-matrix-20260828"
+  },
+  "vdp": {
+    "workstream_id": null,
+    "commit_sha": null,
+    "note": null
+  }
+}

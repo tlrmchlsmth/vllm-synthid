@@ -15,7 +15,7 @@ versions are retained under [`provenance/`](provenance/).
 | Watermark detector ROC AUC, 32 + 32 evaluation samples | — | 0.9980 | Pass |
 | Detector TPR at calibrated threshold | 3.125% FPR | 100% TPR | Pass |
 | Peak ShareGPT throughput | 1,608.9 tok/s | 565.9 tok/s | SynthID overhead is substantial |
-| Forward profile | Valid MRV2 profile | Pending | MRV1 decode attempt was invalid |
+| Forward profile, controlled MRV1 decode-b8 | 1,031.7 tok/s | 591.1 tok/s | Valid; both traces contain 700 GPU events |
 
 The accuracy requirement was at least 98% of the plain baseline. The observed
 SynthID score was 0.945413 versus 0.947688 plain, above the required 0.928734.
@@ -52,20 +52,20 @@ sample JSONL files are intentionally omitted.
 scores, and calibrated comparison. At threshold `0.5184263`, the detector
 obtained 0.998047 ROC AUC, 100% TPR, and 3.125% FPR.
 
-## Forward-pass profiling status
+## Forward-pass profiling
 
-The unwatermarked MRV2 run is valid and retained under
-[`forward-profile/plain/`](forward-profile/plain/), including the website,
-Markdown and JSON reports, compact PyTorch traces, trace summaries, and exact
-resolved specification.
+The corrected runtime matrix is retained under
+[`forward-profile/runtime-matrix-20260828/`](forward-profile/runtime-matrix-20260828/).
+It includes controlled plain and SynthID MRV1 runs plus final-worker MRV2 plain
+and MTP runs. All representative decode and prefill traces contain real GPU
+work. The controlled MRV1 comparison removes runner selection as a confound;
+the full human-readable table and literal service artifacts are included.
 
-The original watermarked MRV1 decode result is excluded because its trace had
-zero GPU events and its throughput was invalid. The fail-closed rerun is
-retained under
-[`forward-profile/watermarked-pending/`](forward-profile/watermarked-pending/):
-it contains no results or profiles and records the current driver rejection.
-A valid watermarked profile remains pending MRV1 support in the benchmark
-service.
+The earlier [`forward-profile/plain/`](forward-profile/plain/) MRV2 result is
+retained as historical evidence. The
+[`forward-profile/watermarked-pending/`](forward-profile/watermarked-pending/)
+directory records the fail-closed intermediate attempt before MRV1 support and
+must not be used as a performance result.
 
 ## Artifact policy
 

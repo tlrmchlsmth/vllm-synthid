@@ -1,0 +1,2334 @@
+{
+  "schema_version": "12",
+  "job_id": "8484b6ec8cd0f46b4fc17c68",
+  "status": "succeeded",
+  "started_at": "2026-08-28T03:39:49.147Z",
+  "started_at_unix": 1787888389.1473868,
+  "environment": {
+    "backend": "vllm-synthetic-scheduler",
+    "vllm_version": "0.28.0",
+    "model_runner": "v1",
+    "engine_core_client": "InprocClient",
+    "vllm_enable_v1_multiprocessing": "0",
+    "async_scheduling": false,
+    "executor": "MultiprocExecutor",
+    "pipeline_depth": 1,
+    "speculative_decoding": false,
+    "num_speculative_tokens": 0,
+    "kv_cache_blocks": 121018,
+    "kv_group_block_sizes": [
+      16,
+      16,
+      16,
+      16,
+      16,
+      32
+    ],
+    "kv_cache_allocator": "vllm-kv-cache-manager",
+    "pooling_execution": null,
+    "kv_cache_spec_types": [
+      "FullAttentionSpec",
+      "SlidingWindowSpec"
+    ],
+    "max_model_len": 16384,
+    "torch_version": "2.13.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_names": [
+      "NVIDIA H200"
+    ],
+    "model": "google/gemma-4-26B-A4B-it",
+    "topology": {
+      "data_parallel_size": 1,
+      "pipeline_parallel_size": 1,
+      "tensor_parallel_size": 1,
+      "expert_parallel": false,
+      "data_parallel_rank": 0
+    },
+    "collective_evidence": [
+      {
+        "global_rank": 0,
+        "local_rank": 0,
+        "world": {
+          "ranks": [
+            0
+          ],
+          "rank_in_group": 0,
+          "world_size": 1,
+          "device_backend": "nccl",
+          "cpu_backend": "gloo"
+        },
+        "tensor_parallel": {
+          "ranks": [
+            0
+          ],
+          "rank_in_group": 0,
+          "world_size": 1,
+          "device_backend": "nccl",
+          "cpu_backend": "gloo"
+        },
+        "pipeline_parallel": {
+          "ranks": [
+            0
+          ],
+          "rank_in_group": 0,
+          "world_size": 1,
+          "device_backend": "nccl",
+          "cpu_backend": "gloo"
+        },
+        "data_parallel": {
+          "ranks": [
+            0
+          ],
+          "rank_in_group": 0,
+          "world_size": 1,
+          "device_backend": "nccl",
+          "cpu_backend": "gloo"
+        },
+        "expert_parallel": {
+          "ranks": [
+            0
+          ],
+          "rank_in_group": 0,
+          "world_size": 1,
+          "device_backend": "nccl",
+          "cpu_backend": "gloo"
+        },
+        "enable_expert_parallel": false,
+        "all2all_backend": "allgather_reducescatter",
+        "distributed_executor_backend": "mp",
+        "moe_collective_implementations": [
+          "vllm.model_executor.layers.fused_moe.prepare_finalize.no_dp_ep.MoEPrepareAndFinalizeNoDPEPModular"
+        ]
+      }
+    ],
+    "python": "3.12.3",
+    "python_executable": "/usr/bin/python3",
+    "hostname": "vllm-forward-bench-8484b6ec8cd0f46b4fc17c68-7v599",
+    "pod": null,
+    "node": null,
+    "pod_ip": null,
+    "runtime_identity": null,
+    "collective_execution": {
+      "completed_engine_steps": 241,
+      "validated_after_case": "prefill-b1-t2048",
+      "proof": "EngineCore completed the synthetic schedule with the validated vLLM process groups and MoE collective implementation active"
+    }
+  },
+  "memory": {
+    "status": "available",
+    "scope": "post-initialization GPU memory, one entry per model worker",
+    "kv_cache": {
+      "allocated_bytes": 79310356480,
+      "num_blocks": 121018,
+      "bytes_per_block_all_groups": 655360,
+      "logical_bytes_per_block_all_groups": 3932160,
+      "nominal_bytes_per_token": 225280.0,
+      "groups": [
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "SlidingWindowSpec": 1
+          },
+          "block_size_tokens": 16,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 40960.0,
+          "sliding_windows_tokens": [
+            1024
+          ],
+          "maximum_resident_bytes_per_request": 671744000
+        },
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "SlidingWindowSpec": 1
+          },
+          "block_size_tokens": 16,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 40960.0,
+          "sliding_windows_tokens": [
+            1024
+          ],
+          "maximum_resident_bytes_per_request": 671744000
+        },
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "SlidingWindowSpec": 1
+          },
+          "block_size_tokens": 16,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 40960.0,
+          "sliding_windows_tokens": [
+            1024
+          ],
+          "maximum_resident_bytes_per_request": 671744000
+        },
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "SlidingWindowSpec": 1
+          },
+          "block_size_tokens": 16,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 40960.0,
+          "sliding_windows_tokens": [
+            1024
+          ],
+          "maximum_resident_bytes_per_request": 671744000
+        },
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "SlidingWindowSpec": 1
+          },
+          "block_size_tokens": 16,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 40960.0,
+          "sliding_windows_tokens": [
+            1024
+          ],
+          "maximum_resident_bytes_per_request": 671744000
+        },
+        {
+          "layer_count": 5,
+          "cache_spec_types": {
+            "FullAttentionSpec": 1
+          },
+          "block_size_tokens": 32,
+          "page_size_bytes_per_layer": 131072,
+          "bytes_per_block": 655360,
+          "nominal_bytes_per_token": 20480.0,
+          "maximum_resident_bytes_per_request": 335544320
+        }
+      ],
+      "maximum_resident_bytes_per_request": 3694264320,
+      "effective_bytes_per_token_at_max_model_len": 225480.0
+    },
+    "weights": {
+      "source": "vllm measured model_memory_usage",
+      "aggregate_engine_bytes": 52123731968,
+      "minimum_worker_bytes": 52123731968,
+      "maximum_worker_bytes": 52123731968
+    },
+    "workers": [
+      {
+        "rank": 0,
+        "local_rank": 0,
+        "device": "cuda:0",
+        "gpu_total_bytes": 150109880320,
+        "gpu_free_bytes": 11258626048,
+        "gpu_used_bytes": 138851254272,
+        "torch_allocated_bytes": 133240133632,
+        "torch_reserved_bytes": 137711583232,
+        "torch_peak_allocated_bytes": 137015580672,
+        "weights_bytes": 52123731968,
+        "requested_bytes": 138101089895,
+        "available_kv_cache_bytes": 79310366311,
+        "non_activation_consumed_bytes": 54148530176,
+        "peak_activation_bytes": 4642193408,
+        "cuda_graph_estimate_bytes": 522190848
+      }
+    ]
+  },
+  "input": {
+    "source": "inline-real-text",
+    "base_token_count": 16,
+    "token_stream_sha256": "2c199a1e7471c944a0b6af86a9cc1ca9ec629510f826b77c712b2b2ef7c19823",
+    "seed": 0,
+    "tokenizer": "google/gemma-4-26B-A4B-it",
+    "tokenizer_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52"
+  },
+  "labels": {
+    "case": "gemma4-plain-mrv1-sync",
+    "sweep": "forward-bench-controlled-mrv1-20260828"
+  },
+  "provenance": {
+    "vllm_image": "quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be",
+    "runtime_mode": "image",
+    "vllm_env": null,
+    "vllm_env_revision": null,
+    "worker_plugin_image": "quay.io/tms/vllm-forward-bench-plugin@sha256:2aec33ebd414640c7a0ade0fe81f1aa28254abaa0f35625a1e01f10623caa557",
+    "worker_bundle_sha256": "e66820790b1c7f3d9ab2e1785c061ae97731e6b7415b841e00ba64b0e694f888",
+    "model_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+    "tokenizer_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+    "resolved_spec_canonical_sha256": "2f56e1d1e57e4789320414209c48885968ab196e8122411b50dde0772738cf95",
+    "artifact_root": "8484b6ec8cd0f46b4fc17c68",
+    "accelerator": "h200",
+    "accelerator_resource": "nvidia.com/gpu",
+    "queue": "synthid-h200",
+    "gpu_count": 1,
+    "node_count": 1,
+    "gpus_per_node": 1,
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "enable_expert_parallel": false
+  },
+  "workloads": {
+    "prefill": {
+      "enabled": true,
+      "batch_size": 1,
+      "token_counts": [
+        512,
+        1024,
+        2048,
+        4096,
+        8192
+      ],
+      "previous_tokens": [
+        {
+          "tokens": 0,
+          "weight": 1.0
+        }
+      ]
+    },
+    "decode": {
+      "enabled": true,
+      "batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "previous_tokens": [
+        {
+          "tokens": 512,
+          "weight": 1.0
+        },
+        {
+          "tokens": 2048,
+          "weight": 2.0
+        },
+        {
+          "tokens": 8192,
+          "weight": 1.0
+        }
+      ]
+    },
+    "mixed": {
+      "enabled": false,
+      "prefill_requests": 1,
+      "prefill_isl": 2048,
+      "prefill_previous_tokens": [
+        {
+          "tokens": 0,
+          "weight": 1.0
+        }
+      ],
+      "decode_batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "decode_previous_tokens": [
+        {
+          "tokens": 2048,
+          "weight": 1.0
+        }
+      ]
+    }
+  },
+  "results": [
+    {
+      "name": "prefill-b1-t512",
+      "family": "prefill",
+      "prefill_requests": 1,
+      "prefill_new_tokens": 512,
+      "decode_requests": 0,
+      "new_prefill_tokens": 512,
+      "total_scheduled_tokens": 512,
+      "history": {
+        "prefill": {
+          "configured": [
+            {
+              "tokens": 0,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 0,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:49.147Z",
+        "measurement_started_at": "2026-08-28T03:39:49.212Z",
+        "measurement_completed_at": "2026-08-28T03:39:49.366Z",
+        "measurement_started_at_unix": 1787888389.2127545,
+        "measurement_completed_at_unix": 1787888389.3662453,
+        "elapsed_ms": 153.490373,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [],
+        "decoder_history_tokens": 0,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          15.351225,
+          15.30548,
+          15.320838,
+          15.325612,
+          15.31374,
+          15.307409,
+          15.340399,
+          15.363643,
+          15.290579,
+          15.571448
+        ],
+        "count": 10,
+        "mean_ms": 15.3490373,
+        "min_ms": 15.290579,
+        "p50_ms": 15.323225,
+        "max_ms": 15.571448,
+        "stdev_ms": 0.08123807493759745,
+        "p90_ms": 15.3844235
+      },
+      "completion_intervals_ms": [
+        15.351225,
+        15.30548,
+        15.320838,
+        15.325612,
+        15.31374,
+        15.307409,
+        15.340399,
+        15.363643,
+        15.290579,
+        15.571448
+      ],
+      "throughput": {
+        "tokens_per_iteration": 512,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 5120,
+        "elapsed_seconds": 0.153490373,
+        "tokens_per_second": 33357.14090681114
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "prefill-b1-t512",
+          "family": "prefill",
+          "prefill_requests": 1,
+          "prefill_new_tokens": 512,
+          "decode_requests": 0,
+          "new_prefill_tokens": 512,
+          "total_scheduled_tokens": 512,
+          "history": {
+            "prefill": {
+              "configured": [
+                {
+                  "tokens": 0,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 0,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "b86a464a87a227de0960aad3cbb315f24b6658665cd2436e3dc49101f88c0826"
+      }
+    },
+    {
+      "name": "prefill-b1-t1024",
+      "family": "prefill",
+      "prefill_requests": 1,
+      "prefill_new_tokens": 1024,
+      "decode_requests": 0,
+      "new_prefill_tokens": 1024,
+      "total_scheduled_tokens": 1024,
+      "history": {
+        "prefill": {
+          "configured": [
+            {
+              "tokens": 0,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 0,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:49.387Z",
+        "measurement_started_at": "2026-08-28T03:39:49.478Z",
+        "measurement_completed_at": "2026-08-28T03:39:49.707Z",
+        "measurement_started_at_unix": 1787888389.4785323,
+        "measurement_completed_at_unix": 1787888389.7072587,
+        "elapsed_ms": 228.72592,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [],
+        "decoder_history_tokens": 0,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          22.665201,
+          22.694887,
+          22.671332,
+          22.753862,
+          22.988979,
+          23.006664,
+          23.036066,
+          23.002086,
+          22.810683,
+          23.09616
+        ],
+        "count": 10,
+        "mean_ms": 22.872592,
+        "min_ms": 22.665201,
+        "p50_ms": 22.899831,
+        "max_ms": 23.09616,
+        "stdev_ms": 0.16931940525921227,
+        "p90_ms": 23.0420754
+      },
+      "completion_intervals_ms": [
+        22.665201,
+        22.694887,
+        22.671332,
+        22.753862,
+        22.988979,
+        23.006664,
+        23.036066,
+        23.002086,
+        22.810683,
+        23.09616
+      ],
+      "throughput": {
+        "tokens_per_iteration": 1024,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 10240,
+        "elapsed_seconds": 0.22872592,
+        "tokens_per_second": 44769.74013264434
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "prefill-b1-t1024",
+          "family": "prefill",
+          "prefill_requests": 1,
+          "prefill_new_tokens": 1024,
+          "decode_requests": 0,
+          "new_prefill_tokens": 1024,
+          "total_scheduled_tokens": 1024,
+          "history": {
+            "prefill": {
+              "configured": [
+                {
+                  "tokens": 0,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 0,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "e244eaba63a5b4c72da62e5c65fb2ca71b7f93fe0740f6a15ef24948da8e9f06"
+      }
+    },
+    {
+      "name": "prefill-b1-t2048",
+      "family": "prefill",
+      "prefill_requests": 1,
+      "prefill_new_tokens": 2048,
+      "decode_requests": 0,
+      "new_prefill_tokens": 2048,
+      "total_scheduled_tokens": 2048,
+      "history": {
+        "prefill": {
+          "configured": [
+            {
+              "tokens": 0,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 0,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:49.727Z",
+        "measurement_started_at": "2026-08-28T03:39:49.875Z",
+        "measurement_completed_at": "2026-08-28T03:39:50.250Z",
+        "measurement_started_at_unix": 1787888389.8750925,
+        "measurement_completed_at_unix": 1787888390.2500021,
+        "elapsed_ms": 374.909512,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [],
+        "decoder_history_tokens": 0,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          37.674938,
+          37.611185,
+          37.645922,
+          37.442933,
+          37.225954,
+          37.502259,
+          37.341589,
+          37.454358,
+          37.278942,
+          37.731432
+        ],
+        "count": 10,
+        "mean_ms": 37.4909512,
+        "min_ms": 37.225954,
+        "p50_ms": 37.4783085,
+        "max_ms": 37.731432,
+        "stdev_ms": 0.173655928362059,
+        "p90_ms": 37.6805874
+      },
+      "completion_intervals_ms": [
+        37.674938,
+        37.611185,
+        37.645922,
+        37.442933,
+        37.225954,
+        37.502259,
+        37.341589,
+        37.454358,
+        37.278942,
+        37.731432
+      ],
+      "throughput": {
+        "tokens_per_iteration": 2048,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 20480,
+        "elapsed_seconds": 0.374909512,
+        "tokens_per_second": 54626.51478418611
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "prefill-b1-t2048",
+          "family": "prefill",
+          "prefill_requests": 1,
+          "prefill_new_tokens": 2048,
+          "decode_requests": 0,
+          "new_prefill_tokens": 2048,
+          "total_scheduled_tokens": 2048,
+          "history": {
+            "prefill": {
+              "configured": [
+                {
+                  "tokens": 0,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 0,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "3b2fb68c4d6e6055383a8f1832401f00e440607b578e41b7582eeacfc30ec017"
+      }
+    },
+    {
+      "name": "prefill-b1-t4096",
+      "family": "prefill",
+      "prefill_requests": 1,
+      "prefill_new_tokens": 4096,
+      "decode_requests": 0,
+      "new_prefill_tokens": 4096,
+      "total_scheduled_tokens": 4096,
+      "history": {
+        "prefill": {
+          "configured": [
+            {
+              "tokens": 0,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 0,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:50.271Z",
+        "measurement_started_at": "2026-08-28T03:39:50.554Z",
+        "measurement_completed_at": "2026-08-28T03:39:51.257Z",
+        "measurement_started_at_unix": 1787888390.5546403,
+        "measurement_completed_at_unix": 1787888391.257753,
+        "elapsed_ms": 703.112181,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [],
+        "decoder_history_tokens": 0,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          69.558708,
+          72.27041,
+          70.655776,
+          70.134377,
+          69.105132,
+          69.194436,
+          69.782096,
+          68.991339,
+          71.336686,
+          72.083221
+        ],
+        "count": 10,
+        "mean_ms": 70.31121809999999,
+        "min_ms": 68.991339,
+        "p50_ms": 69.9582365,
+        "max_ms": 72.27041,
+        "stdev_ms": 1.2233911402821127,
+        "p90_ms": 72.10193989999999
+      },
+      "completion_intervals_ms": [
+        69.558708,
+        72.27041,
+        70.655776,
+        70.134377,
+        69.105132,
+        69.194436,
+        69.782096,
+        68.991339,
+        71.336686,
+        72.083221
+      ],
+      "throughput": {
+        "tokens_per_iteration": 4096,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 40960,
+        "elapsed_seconds": 0.703112181,
+        "tokens_per_second": 58255.284301496125
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "prefill-b1-t4096",
+          "family": "prefill",
+          "prefill_requests": 1,
+          "prefill_new_tokens": 4096,
+          "decode_requests": 0,
+          "new_prefill_tokens": 4096,
+          "total_scheduled_tokens": 4096,
+          "history": {
+            "prefill": {
+              "configured": [
+                {
+                  "tokens": 0,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 0,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "706f7101f9a0e7b21ffdf336ddbb080490b32c287bae9c17088161566453a57c"
+      }
+    },
+    {
+      "name": "prefill-b1-t8192",
+      "family": "prefill",
+      "prefill_requests": 1,
+      "prefill_new_tokens": 8192,
+      "decode_requests": 0,
+      "new_prefill_tokens": 8192,
+      "total_scheduled_tokens": 8192,
+      "history": {
+        "prefill": {
+          "configured": [
+            {
+              "tokens": 0,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 0,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:51.277Z",
+        "measurement_started_at": "2026-08-28T03:39:51.846Z",
+        "measurement_completed_at": "2026-08-28T03:39:53.268Z",
+        "measurement_started_at_unix": 1787888391.8466852,
+        "measurement_completed_at_unix": 1787888393.2687676,
+        "elapsed_ms": 1422.081908,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [],
+        "decoder_history_tokens": 0,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          139.639448,
+          140.345177,
+          149.051276,
+          143.789133,
+          141.542719,
+          139.811289,
+          139.533073,
+          138.564545,
+          144.828398,
+          144.97685
+        ],
+        "count": 10,
+        "mean_ms": 142.2081908,
+        "min_ms": 138.564545,
+        "p50_ms": 140.943948,
+        "max_ms": 149.051276,
+        "stdev_ms": 3.3424510922640063,
+        "p90_ms": 145.3842926
+      },
+      "completion_intervals_ms": [
+        139.639448,
+        140.345177,
+        149.051276,
+        143.789133,
+        141.542719,
+        139.811289,
+        139.533073,
+        138.564545,
+        144.828398,
+        144.97685
+      ],
+      "throughput": {
+        "tokens_per_iteration": 8192,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 81920,
+        "elapsed_seconds": 1.422081908,
+        "tokens_per_second": 57605.68328670418
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "prefill-b1-t8192",
+          "family": "prefill",
+          "prefill_requests": 1,
+          "prefill_new_tokens": 8192,
+          "decode_requests": 0,
+          "new_prefill_tokens": 8192,
+          "total_scheduled_tokens": 8192,
+          "history": {
+            "prefill": {
+              "configured": [
+                {
+                  "tokens": 0,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 0,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "55554b0ab023e8918d28f0880c28b70c33c13f031f4b9908a33fcca33c30bdc4"
+      }
+    },
+    {
+      "name": "decode-b1",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 1,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 1,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 2048,
+                "requests": 1
+              }
+            ],
+            "requests": 1,
+            "min_previous_tokens": 2048,
+            "max_previous_tokens": 2048
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:53.291Z",
+        "measurement_started_at": "2026-08-28T03:39:53.354Z",
+        "measurement_completed_at": "2026-08-28T03:39:53.407Z",
+        "measurement_started_at_unix": 1787888393.3547647,
+        "measurement_completed_at_unix": 1787888393.4071283,
+        "elapsed_ms": 52.363258,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          2049
+        ],
+        "decoder_history_tokens": 2048,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          5.279099,
+          5.292371,
+          5.221066,
+          5.228484,
+          5.185623,
+          5.180176,
+          5.23376,
+          5.205687,
+          5.187146,
+          5.349846
+        ],
+        "count": 10,
+        "mean_ms": 5.2363258,
+        "min_ms": 5.180176,
+        "p50_ms": 5.224775,
+        "max_ms": 5.349846,
+        "stdev_ms": 0.0550144913268819,
+        "p90_ms": 5.2981185
+      },
+      "completion_intervals_ms": [
+        5.279099,
+        5.292371,
+        5.221066,
+        5.228484,
+        5.185623,
+        5.180176,
+        5.23376,
+        5.205687,
+        5.187146,
+        5.349846
+      ],
+      "throughput": {
+        "tokens_per_iteration": 1,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 10,
+        "elapsed_seconds": 0.052363258,
+        "tokens_per_second": 190.9736021391182
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b1",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 1,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 1,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 1
+                  }
+                ],
+                "requests": 1,
+                "min_previous_tokens": 2048,
+                "max_previous_tokens": 2048
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "68163db79e73a0837f20f5f109e43dd1453d6178ed33fab7d53286b4e0b683c1"
+      }
+    },
+    {
+      "name": "decode-b2",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 2,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 2,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 512,
+                "requests": 1
+              },
+              {
+                "previous_tokens": 2048,
+                "requests": 1
+              }
+            ],
+            "requests": 2,
+            "min_previous_tokens": 512,
+            "max_previous_tokens": 2048
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:53.427Z",
+        "measurement_started_at": "2026-08-28T03:39:53.502Z",
+        "measurement_completed_at": "2026-08-28T03:39:53.561Z",
+        "measurement_started_at_unix": 1787888393.5029051,
+        "measurement_completed_at_unix": 1787888393.5612183,
+        "elapsed_ms": 58.31301,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          513,
+          2049
+        ],
+        "decoder_history_tokens": 2560,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          5.836033,
+          5.782155,
+          5.865218,
+          5.858808,
+          5.817346,
+          5.765379,
+          5.840029,
+          5.827365,
+          5.8226,
+          5.898077
+        ],
+        "count": 10,
+        "mean_ms": 5.831301,
+        "min_ms": 5.765379,
+        "p50_ms": 5.831699,
+        "max_ms": 5.898077,
+        "stdev_ms": 0.03874644477454224,
+        "p90_ms": 5.868503899999999
+      },
+      "completion_intervals_ms": [
+        5.836033,
+        5.782155,
+        5.865218,
+        5.858808,
+        5.817346,
+        5.765379,
+        5.840029,
+        5.827365,
+        5.8226,
+        5.898077
+      ],
+      "throughput": {
+        "tokens_per_iteration": 2,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 20,
+        "elapsed_seconds": 0.05831301,
+        "tokens_per_second": 342.97663591709636
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b2",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 2,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 2,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 512,
+                    "requests": 1
+                  },
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 1
+                  }
+                ],
+                "requests": 2,
+                "min_previous_tokens": 512,
+                "max_previous_tokens": 2048
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "b3e23cc20dc2df275151613cf0a11c0ec2f9addab2d7a2c6415aa78859f68139"
+      }
+    },
+    {
+      "name": "decode-b4",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 4,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 4,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 512,
+                "requests": 1
+              },
+              {
+                "previous_tokens": 2048,
+                "requests": 2
+              },
+              {
+                "previous_tokens": 8192,
+                "requests": 1
+              }
+            ],
+            "requests": 4,
+            "min_previous_tokens": 512,
+            "max_previous_tokens": 8192
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:53.585Z",
+        "measurement_started_at": "2026-08-28T03:39:53.844Z",
+        "measurement_completed_at": "2026-08-28T03:39:53.917Z",
+        "measurement_started_at_unix": 1787888393.8444629,
+        "measurement_completed_at_unix": 1787888393.9178321,
+        "elapsed_ms": 73.369613,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          513,
+          2049,
+          2049,
+          8193
+        ],
+        "decoder_history_tokens": 12800,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          7.439101,
+          7.320076,
+          7.251871,
+          7.257148,
+          7.241129,
+          7.184562,
+          7.266069,
+          7.317121,
+          7.534023,
+          7.558513
+        ],
+        "count": 10,
+        "mean_ms": 7.3369613000000005,
+        "min_ms": 7.184562,
+        "p50_ms": 7.291595,
+        "max_ms": 7.558513,
+        "stdev_ms": 0.12913186848683017,
+        "p90_ms": 7.536472
+      },
+      "completion_intervals_ms": [
+        7.439101,
+        7.320076,
+        7.251871,
+        7.257148,
+        7.241129,
+        7.184562,
+        7.266069,
+        7.317121,
+        7.534023,
+        7.558513
+      ],
+      "throughput": {
+        "tokens_per_iteration": 4,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 40,
+        "elapsed_seconds": 0.073369613,
+        "tokens_per_second": 545.1848301285165
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b4",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 4,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 4,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 512,
+                    "requests": 1
+                  },
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 2
+                  },
+                  {
+                    "previous_tokens": 8192,
+                    "requests": 1
+                  }
+                ],
+                "requests": 4,
+                "min_previous_tokens": 512,
+                "max_previous_tokens": 8192
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "6eac0039cdc3d90e446d1d28a38555e3fbbf4e6ab7c6085cf7d98afe1041851a"
+      }
+    },
+    {
+      "name": "decode-b8",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 8,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 8,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 512,
+                "requests": 2
+              },
+              {
+                "previous_tokens": 2048,
+                "requests": 4
+              },
+              {
+                "previous_tokens": 8192,
+                "requests": 2
+              }
+            ],
+            "requests": 8,
+            "min_previous_tokens": 512,
+            "max_previous_tokens": 8192
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:53.938Z",
+        "measurement_started_at": "2026-08-28T03:39:54.431Z",
+        "measurement_completed_at": "2026-08-28T03:39:54.509Z",
+        "measurement_started_at_unix": 1787888394.4318564,
+        "measurement_completed_at_unix": 1787888394.5094008,
+        "elapsed_ms": 77.544427,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          513,
+          513,
+          2049,
+          2049,
+          2049,
+          2049,
+          8193,
+          8193
+        ],
+        "decoder_history_tokens": 25600,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          7.836846,
+          7.760068,
+          7.60212,
+          7.615605,
+          7.765103,
+          7.633038,
+          7.735717,
+          7.789248,
+          7.796048,
+          8.010634
+        ],
+        "count": 10,
+        "mean_ms": 7.7544427,
+        "min_ms": 7.60212,
+        "p50_ms": 7.7625855,
+        "max_ms": 8.010634,
+        "stdev_ms": 0.12160036862064909,
+        "p90_ms": 7.8542248
+      },
+      "completion_intervals_ms": [
+        7.836846,
+        7.760068,
+        7.60212,
+        7.615605,
+        7.765103,
+        7.633038,
+        7.735717,
+        7.789248,
+        7.796048,
+        8.010634
+      ],
+      "throughput": {
+        "tokens_per_iteration": 8,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 80,
+        "elapsed_seconds": 0.077544427,
+        "tokens_per_second": 1031.6666599393404
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b8",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 8,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 8,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 512,
+                    "requests": 2
+                  },
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 4
+                  },
+                  {
+                    "previous_tokens": 8192,
+                    "requests": 2
+                  }
+                ],
+                "requests": 8,
+                "min_previous_tokens": 512,
+                "max_previous_tokens": 8192
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "e7ed9562c2f83cb7dd1d054422cdb449cda0a97b1b24cec6ec3c911184e6c444"
+      }
+    },
+    {
+      "name": "decode-b16",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 16,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 16,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 512,
+                "requests": 4
+              },
+              {
+                "previous_tokens": 2048,
+                "requests": 8
+              },
+              {
+                "previous_tokens": 8192,
+                "requests": 4
+              }
+            ],
+            "requests": 16,
+            "min_previous_tokens": 512,
+            "max_previous_tokens": 8192
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:54.534Z",
+        "measurement_started_at": "2026-08-28T03:39:55.507Z",
+        "measurement_completed_at": "2026-08-28T03:39:55.600Z",
+        "measurement_started_at_unix": 1787888395.5076954,
+        "measurement_completed_at_unix": 1787888395.6005375,
+        "elapsed_ms": 92.842408,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          513,
+          513,
+          513,
+          513,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          8193,
+          8193,
+          8193,
+          8193
+        ],
+        "decoder_history_tokens": 51200,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          9.224022,
+          9.202343,
+          9.148225,
+          9.306535,
+          9.127244,
+          9.156415,
+          9.023258,
+          10.077753,
+          9.268649,
+          9.307964
+        ],
+        "count": 10,
+        "mean_ms": 9.284240800000001,
+        "min_ms": 9.023258,
+        "p50_ms": 9.2131825,
+        "max_ms": 10.077753,
+        "stdev_ms": 0.2922894001513643,
+        "p90_ms": 9.3849429
+      },
+      "completion_intervals_ms": [
+        9.224022,
+        9.202343,
+        9.148225,
+        9.306535,
+        9.127244,
+        9.156415,
+        9.023258,
+        10.077753,
+        9.268649,
+        9.307964
+      ],
+      "throughput": {
+        "tokens_per_iteration": 16,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 160,
+        "elapsed_seconds": 0.092842408,
+        "tokens_per_second": 1723.3503896193643
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b16",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 16,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 16,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 512,
+                    "requests": 4
+                  },
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 8
+                  },
+                  {
+                    "previous_tokens": 8192,
+                    "requests": 4
+                  }
+                ],
+                "requests": 16,
+                "min_previous_tokens": 512,
+                "max_previous_tokens": 8192
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "f119698a466f7cdb6a302375c437e4a57f53dab4fb37233f51f1443a1f1cd9f0"
+      }
+    },
+    {
+      "name": "decode-b32",
+      "family": "decode",
+      "prefill_requests": 0,
+      "prefill_new_tokens": 0,
+      "decode_requests": 32,
+      "new_prefill_tokens": 0,
+      "total_scheduled_tokens": 32,
+      "history": {
+        "prefill": {
+          "configured": [],
+          "realized": {
+            "buckets": [],
+            "requests": 0,
+            "min_previous_tokens": 0,
+            "max_previous_tokens": 0
+          }
+        },
+        "decode": {
+          "configured": [
+            {
+              "tokens": 512,
+              "weight": 1.0
+            },
+            {
+              "tokens": 2048,
+              "weight": 2.0
+            },
+            {
+              "tokens": 8192,
+              "weight": 1.0
+            }
+          ],
+          "realized": {
+            "buckets": [
+              {
+                "previous_tokens": 512,
+                "requests": 8
+              },
+              {
+                "previous_tokens": 2048,
+                "requests": 16
+              },
+              {
+                "previous_tokens": 8192,
+                "requests": 8
+              }
+            ],
+            "requests": 32,
+            "min_previous_tokens": 512,
+            "max_previous_tokens": 8192
+          }
+        }
+      },
+      "status": "succeeded",
+      "measurement_window": {
+        "case_started_at": "2026-08-28T03:39:55.624Z",
+        "measurement_started_at": "2026-08-28T03:39:57.560Z",
+        "measurement_completed_at": "2026-08-28T03:39:57.678Z",
+        "measurement_started_at_unix": 1787888397.5600824,
+        "measurement_completed_at_unix": 1787888397.6783512,
+        "elapsed_ms": 118.268985,
+        "configured_warmup_iterations": 3,
+        "pipeline_ramp_iterations": 1,
+        "completed_iterations": 10
+      },
+      "resident_state": {
+        "decoder_starting_context_tokens": [
+          513,
+          513,
+          513,
+          513,
+          513,
+          513,
+          513,
+          513,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          2049,
+          8193,
+          8193,
+          8193,
+          8193,
+          8193,
+          8193,
+          8193,
+          8193
+        ],
+        "decoder_history_tokens": 102400,
+        "prefill_history_tokens": 0,
+        "lifecycle": "vLLM-managed synthetic request ring"
+      },
+      "completion_interval": {
+        "samples_ms": [
+          11.91928,
+          11.998744,
+          11.666194,
+          11.804127,
+          11.847719,
+          11.706407,
+          11.673405,
+          11.889319,
+          11.698152,
+          12.065638
+        ],
+        "count": 10,
+        "mean_ms": 11.8268985,
+        "min_ms": 11.666194,
+        "p50_ms": 11.825923,
+        "max_ms": 12.065638,
+        "stdev_ms": 0.14157454778411876,
+        "p90_ms": 12.0054334
+      },
+      "completion_intervals_ms": [
+        11.91928,
+        11.998744,
+        11.666194,
+        11.804127,
+        11.847719,
+        11.706407,
+        11.673405,
+        11.889319,
+        11.698152,
+        12.065638
+      ],
+      "throughput": {
+        "tokens_per_iteration": 32,
+        "completed_iterations": 10,
+        "total_scheduled_tokens": 320,
+        "elapsed_seconds": 0.11826898500000001,
+        "tokens_per_second": 2705.6966794802543
+      },
+      "synthetic_schedule": {
+        "schema_version": 1,
+        "case": {
+          "name": "decode-b32",
+          "family": "decode",
+          "prefill_requests": 0,
+          "prefill_new_tokens": 0,
+          "decode_requests": 32,
+          "new_prefill_tokens": 0,
+          "total_scheduled_tokens": 32,
+          "history": {
+            "prefill": {
+              "configured": [],
+              "realized": {
+                "buckets": [],
+                "requests": 0,
+                "min_previous_tokens": 0,
+                "max_previous_tokens": 0
+              }
+            },
+            "decode": {
+              "configured": [
+                {
+                  "tokens": 512,
+                  "weight": 1.0
+                },
+                {
+                  "tokens": 2048,
+                  "weight": 2.0
+                },
+                {
+                  "tokens": 8192,
+                  "weight": 1.0
+                }
+              ],
+              "realized": {
+                "buckets": [
+                  {
+                    "previous_tokens": 512,
+                    "requests": 8
+                  },
+                  {
+                    "previous_tokens": 2048,
+                    "requests": 16
+                  },
+                  {
+                    "previous_tokens": 8192,
+                    "requests": 8
+                  }
+                ],
+                "requests": 32,
+                "min_previous_tokens": 512,
+                "max_previous_tokens": 8192
+              }
+            }
+          }
+        },
+        "pipeline_depth": 1,
+        "pipeline_ramp_iterations": 1,
+        "configured_warmup_iterations": 3,
+        "measured_iterations": 10,
+        "data_parallel_rank": 0,
+        "token_seed": 0,
+        "sha256": "1b8bd752a11ba806aba532cbe53f0bfb1b4842e349382f1374a96edaaadd6433"
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "family": "decode",
+      "case": "decode-b8",
+      "iterations": 1,
+      "profiled_iterations": 2,
+      "step_window": {
+        "first": 2,
+        "last": 2
+      },
+      "started_at": "2026-08-28T03:39:57.709Z",
+      "completed_at": "2026-08-28T03:39:58.356Z",
+      "artifacts": [
+        "8484b6ec8cd0f46b4fc17c68-decode_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398241453635.pt.trace.json.gz"
+      ],
+      "summaries": [
+        "8484b6ec8cd0f46b4fc17c68-decode_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398241453635.pt.trace.summary.json"
+      ],
+      "prefix": "8484b6ec8cd0f46b4fc17c68-decode",
+      "trace_compaction": {
+        "enabled": true,
+        "artifacts": {
+          "8484b6ec8cd0f46b4fc17c68-decode_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398241453635.pt.trace.json.gz": {
+            "skip_top_levels": 0,
+            "prune_host_prefixes": [
+              "vllm_forward_bench/",
+              "vllm-forward-bench-worker"
+            ],
+            "max_depth": 6,
+            "max_children": 32,
+            "original_size_bytes": 61366,
+            "compacted_size_bytes": 52533,
+            "gpu_events_preserved": 1412,
+            "original_host_events": 697,
+            "retained_host_events": 286,
+            "skipped_top_host_events": 0,
+            "prefix_pruned_host_events": 0,
+            "collapsed_host_events": 411,
+            "synthetic_spans": 47
+          }
+        }
+      },
+      "raw_artifacts": []
+    },
+    {
+      "family": "prefill",
+      "case": "prefill-b1-t2048",
+      "iterations": 1,
+      "profiled_iterations": 2,
+      "step_window": {
+        "first": 2,
+        "last": 2
+      },
+      "started_at": "2026-08-28T03:39:58.688Z",
+      "completed_at": "2026-08-28T03:39:59.227Z",
+      "artifacts": [
+        "8484b6ec8cd0f46b4fc17c68-prefill_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398793066908.pt.trace.json.gz"
+      ],
+      "summaries": [
+        "8484b6ec8cd0f46b4fc17c68-prefill_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398793066908.pt.trace.summary.json"
+      ],
+      "prefix": "8484b6ec8cd0f46b4fc17c68-prefill",
+      "trace_compaction": {
+        "enabled": true,
+        "artifacts": {
+          "8484b6ec8cd0f46b4fc17c68-prefill_dp0_pp0_tp0_dcp0_ep0_rank0.1787888398793066908.pt.trace.json.gz": {
+            "skip_top_levels": 0,
+            "prune_host_prefixes": [
+              "vllm_forward_bench/",
+              "vllm-forward-bench-worker"
+            ],
+            "max_depth": 6,
+            "max_children": 32,
+            "original_size_bytes": 196969,
+            "compacted_size_bytes": 139504,
+            "gpu_events_preserved": 1232,
+            "original_host_events": 7923,
+            "retained_host_events": 4554,
+            "skipped_top_host_events": 0,
+            "prefix_pruned_host_events": 0,
+            "collapsed_host_events": 3369,
+            "synthetic_spans": 303
+          }
+        }
+      },
+      "raw_artifacts": []
+    }
+  ],
+  "methodology": {
+    "scope": "sustained synthetic vLLM EngineCore data-plane throughput",
+    "warmup_iterations": 3,
+    "pipeline_ramp_iterations": 1,
+    "measured_iterations": 10,
+    "execution_boundary": "SyntheticScheduler -> EngineCore -> Executor",
+    "engine_core_scheduler_measured": true,
+    "prefix_caching": false,
+    "pipeline_depth": 1,
+    "case_distribution": "replicated_per_data_parallel_rank",
+    "resident_history": "For causal and recurrent runners, the benchmark owns deterministic request state while vLLM's KVCacheManager allocates and recycles each cache group's blocks; history construction occurs before the sustained window. Encoder-only pooling runners instead replay each complete logical sequence because non-causal attention has no incremental KV state. A bounded ring reuses request slots after their prior completion."
+  },
+  "topology": {
+    "workload_kind": "job",
+    "launch_mode": "inproc_mp",
+    "world_size": 1,
+    "local_world_size": 1,
+    "node_count": 1,
+    "gpus_per_node": 1,
+    "rank_order": "DP-major, PP-middle, TP-minor",
+    "rendezvous": "local",
+    "case_distribution": "replicated_per_data_parallel_rank",
+    "result_owner_global_rank": 0,
+    "ranks": [
+      {
+        "global_rank": 0,
+        "node_rank": 0,
+        "local_rank": 0,
+        "data_parallel_rank": 0,
+        "pipeline_parallel_rank": 0,
+        "tensor_parallel_rank": 0,
+        "expert_parallel_rank": null,
+        "model_rank": 0
+      }
+    ],
+    "parallel_groups": {
+      "tensor_parallel": [
+        [
+          0
+        ]
+      ],
+      "pipeline_parallel": [
+        [
+          0
+        ]
+      ],
+      "data_parallel": [
+        [
+          0
+        ]
+      ],
+      "expert_parallel": []
+    }
+  },
+  "quality": {
+    "warnings": []
+  },
+  "completed_at": "2026-08-28T03:39:59.490Z",
+  "completed_at_unix": 1787888399.4904318,
+  "duration_seconds": 10.343044996261597
+}
