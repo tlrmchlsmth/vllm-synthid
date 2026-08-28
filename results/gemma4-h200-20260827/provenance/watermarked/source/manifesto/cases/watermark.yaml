@@ -1,0 +1,8 @@
+extends: plain.yaml
+release: gemma4-watermark
+roles:
+  decode:
+    env:
+      SYNTHID_CONFIG: /etc/vllm-synthid/synthid.json
+    vllm_raw_args:
+      - --logits-processors=vllm_synthid.processor:SynthIDTextLogitsProcessor

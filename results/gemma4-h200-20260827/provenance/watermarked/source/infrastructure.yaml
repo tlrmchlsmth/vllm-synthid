@@ -1,0 +1,29 @@
+apiVersion: kueue.x-k8s.io/v1beta1
+kind: LocalQueue
+metadata:
+  name: synthid-h200
+  namespace: tysmith-dev
+spec:
+  clusterQueue: llm-d-cluster-queue
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synthid-bench-cache
+  namespace: tysmith-dev
+spec:
+  accessModes: [ReadWriteMany]
+  storageClassName: shared-vast
+  resources:
+    requests: {storage: 400Gi}
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: synthid-bench-results
+  namespace: tysmith-dev
+spec:
+  accessModes: [ReadWriteMany]
+  storageClassName: shared-vast
+  resources:
+    requests: {storage: 100Gi}

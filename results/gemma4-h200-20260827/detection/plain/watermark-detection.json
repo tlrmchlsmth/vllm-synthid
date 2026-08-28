@@ -1,0 +1,459 @@
+{
+  "case": "gemma4-plain",
+  "generated_at": "2026-08-27T22:14:14.236119+00:00",
+  "max_tokens": 256,
+  "model": "google/gemma-4-26B-A4B-it",
+  "model_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+  "samples": 64,
+  "scores": [
+    {
+      "id": "sample-000",
+      "mean_score": 0.5163690447807312,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-001",
+      "mean_score": 0.4995039701461792,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-002",
+      "mean_score": 0.5104166865348816,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-003",
+      "mean_score": 0.5055443644523621,
+      "num_scored_ngrams": 248,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-004",
+      "mean_score": 0.5059523582458496,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-005",
+      "mean_score": 0.4880000054836273,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-006",
+      "mean_score": 0.5005019903182983,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-007",
+      "mean_score": 0.4766865074634552,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-008",
+      "mean_score": 0.4895833432674408,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-009",
+      "mean_score": 0.5259336233139038,
+      "num_scored_ngrams": 241,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-010",
+      "mean_score": 0.497519850730896,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-011",
+      "mean_score": 0.4980158805847168,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-012",
+      "mean_score": 0.5114087462425232,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-013",
+      "mean_score": 0.4970238208770752,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-014",
+      "mean_score": 0.5184262990951538,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-015",
+      "mean_score": 0.5099206566810608,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-016",
+      "mean_score": 0.5089285969734192,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-017",
+      "mean_score": 0.4904618561267853,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-018",
+      "mean_score": 0.5039682388305664,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-019",
+      "mean_score": 0.5095381736755371,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-020",
+      "mean_score": 0.5134999752044678,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-021",
+      "mean_score": 0.5059999823570251,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-022",
+      "mean_score": 0.49950000643730164,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-023",
+      "mean_score": 0.5064483880996704,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-024",
+      "mean_score": 0.5054563283920288,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-025",
+      "mean_score": 0.5030120611190796,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-026",
+      "mean_score": 0.5004960298538208,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-027",
+      "mean_score": 0.4955357015132904,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-028",
+      "mean_score": 0.5004960298538208,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-029",
+      "mean_score": 0.5110442042350769,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-030",
+      "mean_score": 0.5029761791229248,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-031",
+      "mean_score": 0.512948215007782,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-032",
+      "mean_score": 0.5163690447807312,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-033",
+      "mean_score": 0.4955357015132904,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-034",
+      "mean_score": 0.5084325671195984,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-035",
+      "mean_score": 0.514384925365448,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-036",
+      "mean_score": 0.5034860372543335,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-037",
+      "mean_score": 0.4979591965675354,
+      "num_scored_ngrams": 245,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-038",
+      "mean_score": 0.4920634925365448,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-039",
+      "mean_score": 0.4905754029750824,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-040",
+      "mean_score": 0.4980158805847168,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-041",
+      "mean_score": 0.4792509973049164,
+      "num_scored_ngrams": 247,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-042",
+      "mean_score": 0.494047611951828,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-043",
+      "mean_score": 0.5089285969734192,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-044",
+      "mean_score": 0.5034722089767456,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-045",
+      "mean_score": 0.4935515820980072,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-046",
+      "mean_score": 0.5059523582458496,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-047",
+      "mean_score": 0.48908731341362,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-048",
+      "mean_score": 0.50942462682724,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-049",
+      "mean_score": 0.5149999856948853,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-050",
+      "mean_score": 0.49495968222618103,
+      "num_scored_ngrams": 248,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-051",
+      "mean_score": 0.4874497950077057,
+      "num_scored_ngrams": 249,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-052",
+      "mean_score": 0.4970000088214874,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-053",
+      "mean_score": 0.480654776096344,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-054",
+      "mean_score": 0.4980158805847168,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-055",
+      "mean_score": 0.504960298538208,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-056",
+      "mean_score": 0.4851190447807312,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-057",
+      "mean_score": 0.5087810158729553,
+      "num_scored_ngrams": 242,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-058",
+      "mean_score": 0.4930278956890106,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-059",
+      "mean_score": 0.5024999976158142,
+      "num_scored_ngrams": 250,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-060",
+      "mean_score": 0.491567462682724,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-061",
+      "mean_score": 0.525896430015564,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-062",
+      "mean_score": 0.5064483880996704,
+      "num_scored_ngrams": 252,
+      "num_tokens": 256,
+      "profile": "provider"
+    },
+    {
+      "id": "sample-063",
+      "mean_score": 0.4910358488559723,
+      "num_scored_ngrams": 251,
+      "num_tokens": 256,
+      "profile": "provider"
+    }
+  ],
+  "temperature": 0.8
+}

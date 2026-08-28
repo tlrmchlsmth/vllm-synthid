@@ -1,0 +1,22 @@
+{
+  "cluster": "/app/sweeps/synthid-h200/manifesto/cluster-waldorf-h200.yaml",
+  "rendered_at": "2026-08-27T22:38:33.263728+00:00",
+  "resources": [
+    {
+      "apiVersion": "leaderworkerset.x-k8s.io/v1",
+      "kind": "LeaderWorkerSet",
+      "name": "tms-t220400z-gemma4-watermark-decode"
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "name": "tms-t220400z-gemma4-watermark-decode-svc"
+    },
+    {
+      "apiVersion": "monitoring.coreos.com/v1",
+      "kind": "PodMonitor",
+      "name": "tms-t220400z-gemma4-watermark-decode-svc-metrics"
+    }
+  ],
+  "source": "/app/sweeps/synthid-h200/manifesto/cases/watermark.yaml"
+}

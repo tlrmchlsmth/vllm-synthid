@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vllm-forward-bench run 6702f82fd8e6ab821c008677</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #fff; --ink: #0b0b0b; --muted: #737373; --line: #dedede;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #b87900; --s5: #c44d78;
+  --s6: #526b82; --faster: #006300; --slower: #c83232; --fail: #c83232;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0 20px 80px; background: var(--bg); color: var(--ink);
+  font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+main { max-width: 1400px; margin: 0 auto; }
+a { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { background: var(--line); }
+h1 {
+  font-size: 13px; font-weight: 700; margin: 0 0 8px; padding: 10px 0;
+  border-bottom: 1px solid var(--ink);
+}
+h1 small, h2 small { font-weight: 400; color: var(--muted); }
+h2 {
+  font-size: 13px; font-weight: 700; margin: 30px 0 8px;
+  padding-bottom: 4px; border-bottom: 1px solid var(--line);
+}
+table { border-collapse: collapse; }
+th, td { padding: 3px 10px; text-align: right; border-bottom: 1px solid var(--line);
+  white-space: nowrap; }
+th { color: var(--muted); font-weight: 400; }
+th.l, td.l { text-align: left; }
+.scroll { overflow-x: auto; }
+.muted { color: var(--muted); }
+.fail { color: var(--fail); }
+.faster { color: var(--faster); }
+.slower { color: var(--slower); }
+.facts { display: grid; grid-template-columns: repeat(3, max-content minmax(12ch, 1fr));
+  gap: 2px 14px; margin: 8px 0; }
+@media (max-width: 1100px) {
+  .facts { grid-template-columns: max-content minmax(12ch, 1fr); }
+}
+.facts dt { color: var(--muted); }
+.facts dd { margin: 0; }
+.glossary { display: grid; grid-template-columns: max-content minmax(20ch, 1fr);
+  gap: 4px 14px; max-width: 110ch; margin: 8px 0 12px; }
+.glossary dt { color: var(--muted); }
+.glossary dd { margin: 0; }
+.chartrow { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap;
+  margin: 6px 0 10px; }
+svg.chart { max-width: 100%; height: auto; }
+svg.chart text { font: 11px ui-monospace, Menlo, monospace; fill: var(--muted); }
+svg.chart .end { font-weight: 700; }
+.warnline { margin: 3px 0; max-width: 110ch; }
+.empty { color: var(--muted); }
+</style>
+</head><body><main>
+<h1>run 6702f82fd8e6ab821c008677 <small>· h200×1 · tp1</small></h1><dl class="facts"><dt>state</dt><dd>failed · 0/0 cases</dd><dt>model</dt><dd>unknown</dd><dt>model rev</dt><dd>4d7ae4984b7db7de8f8457170b3f1a419ee76d52</dd><dt>vllm image</dt><dd>vllm-synthid@7cfdbe8550a3…</dd><dt>vllm runtime</dt><dd>image · image environment</dd><dt>worker plugin</dt><dd>vllm-forward-bench-plugin@0a6bba3e77ac…</dd><dt>worker bundle</dt><dd>41c19ef9b96acff0</dd><dt>vllm</dt><dd>unknown</dd><dt>python</dt><dd>unknown · unknown</dd><dt>torch</dt><dd>unknown</dd><dt>gpu</dt><dd>unknown</dd><dt>started</dt><dd>2026-08-27T23:58:30.723Z</dd><dt>completed</dt><dd>2026-08-28T00:02:31.810Z</dd><dt>samples</dt><dd>3 warmup + 10 measured</dd><dt>labels</dt><dd>case=gemma4-watermark sweep=synthid-gemma4-v028-r2-20260827t220400z</dd><dt>spec sha</dt><dd>a960dcae34dbd8b1</dd></dl><h2>failures</h2><p class="warnline fail">RuntimeError: synthetic execution requires Model Runner V2; set VLLM_USE_V2_MODEL_RUNNER=1 or use a supported configuration</p><h2>prefill</h2><p class="empty">This workload family was not part of the run.</p><h2>decode</h2><p class="empty">This workload family was not part of the run.</p><h2>mixed</h2><p class="empty">This workload family was not part of the run.</p><h2>profiles</h2><p class="empty">Profiling was disabled.</p><h2>methodology</h2><p class="muted" style="max-width:110ch">Each result measures sustained synthetic vLLM EngineCore data-plane throughput. An out-of-tree scheduler plugin sends deterministic SchedulerOutputs through EngineCore, the real executor, and workers with a bounded internal pipeline. Resident KV histories are constructed before measurement. Measurement details are in <a href="report.json">report.json</a>. Immutable artifact hashes are in <a href="artifact-manifest.json">artifact-manifest.json</a>.</p>
+</main></body></html>

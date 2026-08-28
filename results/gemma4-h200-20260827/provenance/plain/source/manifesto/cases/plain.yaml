@@ -1,0 +1,2 @@
+extends: ../base/tp1.yaml
+release: gemma4-plain

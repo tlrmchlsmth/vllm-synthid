@@ -1,0 +1,39 @@
+name: waldorf-h200
+platform: kubernetes
+gpus_per_node: 8
+naming: {user_prefix: true}
+accelerators:
+  default: h200
+  profiles:
+    h200:
+      resource_name: nvidia.com/gpu
+      presence_label: gpu.nvidia.com/class
+      node_selector: {gpu.nvidia.com/class: H200}
+      gpu_arch: h200
+      torch_cuda_arch_list: "9.0"
+storage:
+  shared_volume:
+    persistentVolumeClaim: {claimName: synthid-bench-cache}
+  shared_mount_path: /mnt/shared
+  local_nvme_path: null
+pod_defaults:
+  shm_size: 64Gi
+  image_pull_policy: IfNotPresent
+  container_security_context:
+    allowPrivilegeEscalation: false
+    capabilities: {drop: [ALL]}
+  extra_volumes:
+    - name: synthid-config
+      secret: {secretName: synthid-watermark-config}
+  extra_volume_mounts:
+    - name: synthid-config
+      mountPath: /etc/vllm-synthid
+      readOnly: true
+kueue: {local_queue: synthid-h200}
+fabric:
+  ucx_net_devices: ""
+  default_profile: standard
+  expert_parallel_profiles:
+    decode: standard
+    prefill: standard
+  profiles: {standard: {}}

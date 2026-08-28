@@ -1,0 +1,54 @@
+image:
+  repository: quay.io/tms/inference-hard-lm-eval
+  digest: sha256:REPLACE_WITH_KUEUE_ENABLED_IMAGE_DIGEST
+imagePullSecrets: [{name: quay-tms}]
+nodeSelector: {kubernetes.io/arch: amd64}
+auth:
+  existingSecret: synthid-lm-eval-token
+worker:
+  resources:
+    requests: {cpu: "2", memory: 4Gi}
+    limits: {cpu: "8", memory: 16Gi}
+scheduling:
+  localQueue: synthid-h200
+persistence:
+  existingClaim: synthid-bench-results
+huggingFace:
+  tokenSecret: {name: hf-secret, key: HF_TOKEN}
+targets:
+  gemma4-synthid:
+    base_url: http://gemma4-synthid-vllm:8000/v1
+    tls_verify: false
+    max_concurrency: 8
+  gemma4-synthid-plain:
+    base_url: http://gemma4-synthid-vllm:8000/v1
+    tls_verify: false
+    max_concurrency: 8
+  gemma4-synthid-watermark:
+    base_url: http://gemma4-synthid-vllm:8000/v1
+    tls_verify: false
+    max_concurrency: 8
+networkPolicy:
+  enabled: true
+  controllerEgress:
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: kube-system}
+      ports:
+        - {protocol: UDP, port: 53}
+        - {protocol: TCP, port: 53}
+    - to: [{ipBlock: {cidr: 0.0.0.0/0}}]
+      ports: [{protocol: TCP, port: 443}]
+  workerEgress:
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: kube-system}
+      ports:
+        - {protocol: UDP, port: 53}
+        - {protocol: TCP, port: 53}
+    - to: [{ipBlock: {cidr: 0.0.0.0/0}}]
+      ports: [{protocol: TCP, port: 443}]
+    - to:
+        - namespaceSelector:
+            matchLabels: {kubernetes.io/metadata.name: tysmith-dev}
+      ports: [{protocol: TCP, port: 8000}]

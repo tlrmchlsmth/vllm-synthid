@@ -1,0 +1,164 @@
+{
+  "schema_version": "12",
+  "job_id": "6702f82fd8e6ab821c008677",
+  "started_at": "2026-08-27T23:58:30.723Z",
+  "started_at_unix": 1787875110.7234714,
+  "environment": {},
+  "input": {},
+  "labels": {
+    "case": "gemma4-watermark",
+    "sweep": "synthid-gemma4-v028-r2-20260827t220400z"
+  },
+  "provenance": {
+    "vllm_image": "quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be",
+    "runtime_mode": "image",
+    "vllm_env": null,
+    "vllm_env_revision": null,
+    "worker_plugin_image": "quay.io/tms/vllm-forward-bench-plugin@sha256:0a6bba3e77acf33ac2a66c5b500ddba7b0042d1e98775c68d19236f05dc513d3",
+    "worker_bundle_sha256": "41c19ef9b96acff0cb6c741e3c24d3f1cb5f99c8f6deff06591fa61f2e984217",
+    "model_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+    "tokenizer_revision": "4d7ae4984b7db7de8f8457170b3f1a419ee76d52",
+    "resolved_spec_canonical_sha256": "a960dcae34dbd8b19f142999dc626a9bd2358dd4ffde6f9a745aa6544d47563c",
+    "artifact_root": "6702f82fd8e6ab821c008677",
+    "accelerator": "h200",
+    "accelerator_resource": "nvidia.com/gpu",
+    "queue": "synthid-h200",
+    "gpu_count": 1,
+    "node_count": 1,
+    "gpus_per_node": 1,
+    "tensor_parallel_size": 1,
+    "pipeline_parallel_size": 1,
+    "data_parallel_size": 1,
+    "enable_expert_parallel": false
+  },
+  "workloads": {
+    "prefill": {
+      "enabled": true,
+      "batch_size": 1,
+      "token_counts": [
+        512,
+        1024,
+        2048,
+        4096,
+        8192
+      ],
+      "previous_tokens": [
+        {
+          "tokens": 0,
+          "weight": 1.0
+        }
+      ]
+    },
+    "decode": {
+      "enabled": true,
+      "batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "previous_tokens": [
+        {
+          "tokens": 512,
+          "weight": 1.0
+        },
+        {
+          "tokens": 2048,
+          "weight": 2.0
+        },
+        {
+          "tokens": 8192,
+          "weight": 1.0
+        }
+      ]
+    },
+    "mixed": {
+      "enabled": false,
+      "prefill_requests": 1,
+      "prefill_isl": 2048,
+      "prefill_previous_tokens": [
+        {
+          "tokens": 0,
+          "weight": 1.0
+        }
+      ],
+      "decode_batch_sizes": [
+        1,
+        2,
+        4,
+        8,
+        16,
+        32
+      ],
+      "decode_previous_tokens": [
+        {
+          "tokens": 2048,
+          "weight": 1.0
+        }
+      ]
+    }
+  },
+  "results": [],
+  "profiles": [],
+  "methodology": {
+    "scope": "sustained synthetic vLLM EngineCore data-plane throughput",
+    "warmup_iterations": 3,
+    "measured_iterations": 10,
+    "prefix_caching": false,
+    "execution_boundary": "SyntheticScheduler -> EngineCore -> Executor",
+    "engine_core_scheduler_measured": true,
+    "case_distribution": "replicated_per_data_parallel_rank"
+  },
+  "topology": {
+    "workload_kind": "job",
+    "launch_mode": "inproc_mp",
+    "world_size": 1,
+    "local_world_size": 1,
+    "node_count": 1,
+    "gpus_per_node": 1,
+    "rank_order": "DP-major, PP-middle, TP-minor",
+    "rendezvous": "local",
+    "case_distribution": "replicated_per_data_parallel_rank",
+    "result_owner_global_rank": 0,
+    "ranks": [
+      {
+        "global_rank": 0,
+        "node_rank": 0,
+        "local_rank": 0,
+        "data_parallel_rank": 0,
+        "pipeline_parallel_rank": 0,
+        "tensor_parallel_rank": 0,
+        "expert_parallel_rank": null,
+        "model_rank": 0
+      }
+    ],
+    "parallel_groups": {
+      "tensor_parallel": [
+        [
+          0
+        ]
+      ],
+      "pipeline_parallel": [
+        [
+          0
+        ]
+      ],
+      "data_parallel": [
+        [
+          0
+        ]
+      ],
+      "expert_parallel": []
+    }
+  },
+  "status": "failed",
+  "completed_at": "2026-08-28T00:02:31.810Z",
+  "completed_at_unix": 1787875351.8107119,
+  "duration_seconds": 241.0872404575348,
+  "error": "RuntimeError: synthetic execution requires Model Runner V2; set VLLM_USE_V2_MODEL_RUNNER=1 or use a supported configuration",
+  "quality": {
+    "warnings": []
+  }
+}

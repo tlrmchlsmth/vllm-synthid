@@ -1,0 +1,192 @@
+{
+  "artifact_hashes": {
+    "effective-configuration.json": "b2b2f5913ee6ff5d42d37de1f83768ec1ac139073bb536a160a2512ccbbc1219",
+    "lm-eval-result.json": "ed65c2a726a2197113e9c58f5b1420396fafd57b31c73250de5f7f19bf557120",
+    "samples.jsonl": "0f27b23a56cd7285b078de33048edeb29d40f46670a1d3b2948b40a90e1058ee",
+    "worker.log": "79cb79f3a4f42614aaeb39e71df939e0df4f80000aeb57478a5fd5cb1614a6b1"
+  },
+  "dataset_fingerprints": {
+    "openai/gsm8k:main@740312add88f781978c0658806c59bc2815b9866": {
+      "test": "59ec1b7f9357c7a2",
+      "train": "c6f812ae33c9159d"
+    }
+  },
+  "effective_configuration": {
+    "api_mode": "chat_completions",
+    "chat_template": "default",
+    "dataset_auth_secret_ref": {
+      "key": "HF_TOKEN",
+      "name": "hf-secret"
+    },
+    "dataset_cache": {
+      "claim_name": null,
+      "mode": "per-job-ephemeral",
+      "root": "/tmp/huggingface"
+    },
+    "evaluation_id": "eval-becd893d92869f15fb58",
+    "generation_limit": 512,
+    "job_configuration": {
+      "active_deadline_seconds": 14460,
+      "backoff_limit": 0,
+      "cache_size_limit": "4Gi",
+      "cpu_limit": "8",
+      "cpu_request": "2",
+      "image_pull_secrets": [
+        "quay-tms"
+      ],
+      "local_queue": "synthid-h200",
+      "memory_limit": "16Gi",
+      "memory_request": "4Gi",
+      "namespace": "tysmith-dev",
+      "node_selector": {
+        "kubernetes.io/arch": "amd64"
+      },
+      "service_account": "synthid-lm-eval-worker",
+      "service_instance": "synthid"
+    },
+    "limit": 1319,
+    "lm_eval_commit": "8a07e1110d060de48cfc7a9a7987b7659060b60b",
+    "lm_eval_invocation": {
+      "apply_chat_template": true,
+      "batch_size": 1,
+      "bootstrap_iters": 0,
+      "cache_requests": false,
+      "check_integrity": false,
+      "confirm_run_unsafe_code": false,
+      "delete_requests_cache": false,
+      "fewshot_as_multiturn": true,
+      "generation_kwargs": {
+        "do_sample": false,
+        "max_gen_toks": 512,
+        "temperature": 0.0
+      },
+      "limit": 1319,
+      "log_samples": true,
+      "metadata": {},
+      "model_args": {
+        "base_url": "http://gemma4-synthid-vllm:8000/v1/chat/completions",
+        "max_gen_toks": 512,
+        "max_retries": 2,
+        "model": "google/gemma-4-26B-A4B-it",
+        "num_concurrent": 8,
+        "seed": 1533725229,
+        "timeout": 300,
+        "tokenized_requests": false,
+        "tokenizer_backend": "none",
+        "verify_certificate": false
+      },
+      "model_backend": "local-chat-completions",
+      "num_fewshot": 5,
+      "predict_only": false,
+      "primary_metric": {
+        "filter": "flexible-extract",
+        "metric": "exact_match",
+        "task": "gsm8k"
+      },
+      "rewrite_requests_cache": false,
+      "seeds": {
+        "fewshot": 1533725229,
+        "numpy": 1533725229,
+        "python": 1533725229,
+        "torch": 1533725229
+      },
+      "system_instruction": null,
+      "tasks": [
+        {
+          "config_path": "lm_eval/tasks/gsm8k/gsm8k.yaml",
+          "dataset": {
+            "name": "main",
+            "path": "openai/gsm8k",
+            "revision": "740312add88f781978c0658806c59bc2815b9866"
+          },
+          "name": "gsm8k"
+        }
+      ],
+      "write_out": false
+    },
+    "lm_eval_version": "0.4.13.dev0",
+    "model": "google/gemma-4-26B-A4B-it",
+    "num_fewshot": 5,
+    "plan_sha256": "becd893d92869f15fb582477d1826c14491d8d451296c9dd6fb8df9e41059d77",
+    "profile": "gsm8k",
+    "profile_configuration": {
+      "dataset_token_secret_key": null,
+      "dataset_token_secret_name": null,
+      "default_generation_limit": 512,
+      "default_num_fewshot": 5,
+      "max_generation_limit": 4096,
+      "max_num_fewshot": 32,
+      "max_samples": 1319,
+      "primary_metric": {
+        "filter": "flexible-extract",
+        "metric": "exact_match",
+        "task": "gsm8k"
+      },
+      "tasks": [
+        {
+          "config_path": "lm_eval/tasks/gsm8k/gsm8k.yaml",
+          "dataset": {
+            "name": "main",
+            "path": "openai/gsm8k",
+            "revision": "740312add88f781978c0658806c59bc2815b9866"
+          },
+          "name": "gsm8k"
+        }
+      ]
+    },
+    "request_sha256": "5562442123feba047127e1776a90a2d5d3f26be5f3e79cba96ee1b888c2754df",
+    "resolved_generation_limit": 512,
+    "resolved_num_fewshot": 5,
+    "resolved_target": "http://gemma4-synthid-vllm:8000/v1/chat/completions",
+    "result_backend": {
+      "claim_name": "synthid-bench-results",
+      "root": "/var/lib/lm-eval-results",
+      "type": "persistent_volume_claim"
+    },
+    "seeds": {
+      "fewshot": 1533725229,
+      "numpy": 1533725229,
+      "python": 1533725229,
+      "torch": 1533725229
+    },
+    "service_version": "2.0.0",
+    "target": "gemma4-synthid-plain",
+    "target_configuration": {
+      "auth_secret_ref": null,
+      "endpoint_identity": "http://gemma4-synthid-vllm:8000/v1/chat/completions",
+      "logical_name": "gemma4-synthid-plain",
+      "max_concurrency": 8,
+      "tls_verify": false
+    },
+    "timeout_seconds": 14400,
+    "worker_image": "quay.io/tms/inference-hard-lm-eval@sha256:01e0c503711a6fb095f2d59d6438b9cbe96b6ee6ff24cde9cae0a77142556160"
+  },
+  "error": null,
+  "evaluation_id": "eval-becd893d92869f15fb58",
+  "latency_seconds": 219.34643482603133,
+  "lm_eval_commit": "8a07e1110d060de48cfc7a9a7987b7659060b60b",
+  "lm_eval_version": "0.4.13.dev0",
+  "measurement_completed_at": "2026-08-27T22:12:45.757079Z",
+  "measurement_started_at": "2026-08-27T22:09:06.410647Z",
+  "metrics": {
+    "gsm8k": {
+      "exact_match,flexible-extract": 0.9476876421531463,
+      "exact_match,strict-match": 0.9484457922668689,
+      "sample_len": 1319.0
+    }
+  },
+  "model_identity": {
+    "endpoint": "http://gemma4-synthid-vllm:8000/v1/chat/completions",
+    "served_model": "google/gemma-4-26B-A4B-it"
+  },
+  "primary_metric": {
+    "filter": "flexible-extract",
+    "metric": "exact_match",
+    "task": "gsm8k",
+    "value": 0.9476876421531463
+  },
+  "sample_counts": {
+    "gsm8k": 1319
+  },
+  "terminal_state": "succeeded"
+}

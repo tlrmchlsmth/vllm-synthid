@@ -1,0 +1,140 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vllm-forward-bench-a83db8ced07a2be3e95fbdc6
+  labels: &id001
+    app.kubernetes.io/name: vllm-forward-bench-worker
+    app.kubernetes.io/managed-by: vllm-forward-bench
+    bench.vllm.ai/job-id: a83db8ced07a2be3e95fbdc6
+    bench.vllm.ai/accelerator: h200
+    kueue.x-k8s.io/queue-name: synthid-h200
+  annotations:
+    bench.vllm.ai/accelerator-resource: nvidia.com/gpu
+    bench.vllm.ai/worker-plugin-image: quay.io/tms/vllm-forward-bench-plugin@sha256:8cb9489dabaaa557c67ee591fcd48d31d9702c11fa3f89994b2714dd0eb80752
+    bench.vllm.ai/worker-bundle-sha256: b653928cd548fa4205a453cc0169dd2a5640104873e940e5d2e31fb8e43e6610
+spec:
+  suspend: true
+  backoffLimit: 0
+  activeDeadlineSeconds: 7200
+  ttlSecondsAfterFinished: 86400
+  template:
+    metadata:
+      labels: *id001
+      annotations:
+        bench.vllm.ai/accelerator-resource: nvidia.com/gpu
+        bench.vllm.ai/worker-plugin-image: quay.io/tms/vllm-forward-bench-plugin@sha256:8cb9489dabaaa557c67ee591fcd48d31d9702c11fa3f89994b2714dd0eb80752
+        bench.vllm.ai/worker-bundle-sha256: b653928cd548fa4205a453cc0169dd2a5640104873e940e5d2e31fb8e43e6610
+    spec:
+      serviceAccountName: vllm-forward-bench-worker
+      restartPolicy: Never
+      enableServiceLinks: false
+      nodeSelector:
+        gpu.nvidia.com/class: H200
+      initContainers:
+      - name: worker-plugin
+        image: quay.io/tms/vllm-forward-bench-plugin@sha256:8cb9489dabaaa557c67ee591fcd48d31d9702c11fa3f89994b2714dd0eb80752
+        imagePullPolicy: Always
+        command:
+        - /bin/sh
+        - -ceu
+        args:
+        - cp /opt/vllm-forward-bench/worker.pyz /worker/worker.pyz; chmod 0444 /worker/worker.pyz
+        volumeMounts:
+        - name: worker-bundle
+          mountPath: /worker
+      containers:
+      - name: benchmark
+        image: quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be
+        imagePullPolicy: Always
+        args:
+        - --spec
+        - /config/spec.json
+        - --job-id
+        - a83db8ced07a2be3e95fbdc6
+        - --output-dir
+        - /results
+        command:
+        - python3
+        - /worker/worker.pyz
+        resources:
+          requests:
+            cpu: '16'
+            memory: 128Gi
+            nvidia.com/gpu: '1'
+          limits:
+            nvidia.com/gpu: '1'
+        env:
+        - name: LOGNAME
+          value: vllm-benchmark
+        - name: USER
+          value: vllm-benchmark
+        - name: HOME
+          value: /model-cache
+        - name: HF_HOME
+          value: /model-cache/huggingface
+        - name: XDG_CACHE_HOME
+          value: /tmp/xdg-cache
+        - name: VLLM_CACHE_ROOT
+          value: /tmp/vllm-cache
+        - name: TRITON_CACHE_DIR
+          value: /tmp/triton-cache
+        - name: TORCHINDUCTOR_CACHE_DIR
+          value: /tmp/torchinductor-cache
+        - name: NUMBA_CACHE_DIR
+          value: /tmp/numba
+        - name: VLLM_ENABLE_V1_MULTIPROCESSING
+          value: '0'
+        - name: VLLM_USE_V2_MODEL_RUNNER
+          value: '1'
+        - name: BENCH_WORKER_BUNDLE_PATH
+          value: /worker/worker.pyz
+        - name: BENCH_WORKER_BUNDLE_SHA256
+          value: b653928cd548fa4205a453cc0169dd2a5640104873e940e5d2e31fb8e43e6610
+        - name: BENCH_WORKER_PLUGIN_IMAGE
+          value: quay.io/tms/vllm-forward-bench-plugin@sha256:8cb9489dabaaa557c67ee591fcd48d31d9702c11fa3f89994b2714dd0eb80752
+        - name: BENCH_ACCELERATOR_RESOURCE_NAME
+          value: nvidia.com/gpu
+        - name: BENCH_QUEUE_NAME
+          value: synthid-h200
+        - name: HF_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: hf-secret
+              key: HF_TOKEN
+        volumeMounts:
+        - name: config
+          mountPath: /config
+          readOnly: true
+        - name: worker-bundle
+          mountPath: /worker
+          readOnly: true
+        - name: results
+          mountPath: /results
+        - name: dshm
+          mountPath: /dev/shm
+        - name: model-cache
+          mountPath: /model-cache
+      volumes:
+      - name: config
+        configMap:
+          name: vllm-forward-bench-a83db8ced07a2be3e95fbdc6
+      - name: worker-bundle
+        emptyDir: {}
+      - name: results
+        persistentVolumeClaim:
+          claimName: vllm-forward-bench-results
+      - name: dshm
+        emptyDir:
+          medium: Memory
+          sizeLimit: 16Gi
+      - name: model-cache
+        persistentVolumeClaim:
+          claimName: vllm-forward-bench-model-cache
+      priorityClassName: cw-hpc-verification
+      tolerations:
+      - key: qos.coreweave.cloud/interruptable
+        operator: Equal
+        value: 'true'
+        effect: NoExecute
+      imagePullSecrets:
+      - name: quay-tms

@@ -1,0 +1,8 @@
+{
+  "baseline_case": "gemma4-plain",
+  "baseline_value": 0.9476876421531463,
+  "current_value": 0.9454131918119788,
+  "minimum_relative_accuracy": 0.98,
+  "passed": true,
+  "threshold": 0.9287338893100834
+}

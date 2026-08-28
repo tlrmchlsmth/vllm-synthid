@@ -1,0 +1,194 @@
+---
+apiVersion: leaderworkerset.x-k8s.io/v1
+kind: LeaderWorkerSet
+metadata:
+  name: tms-t220400z-gemma4-watermark-decode
+  labels:
+    app.kubernetes.io/name: manifesto
+    app.kubernetes.io/instance: tms-t220400z-gemma4-watermark
+    llm-d.ai/owner: tms-t220400z
+    app.kubernetes.io/component: lws
+    llm-d.ai/role: decode
+    llm-d.ai/inferenceServing: 'true'
+    llm-d.ai/model: gemma4-26b-a4b-it
+    llm-d.ai/deployment: aggregated
+    kueue.x-k8s.io/queue-name: synthid-h200
+spec:
+  replicas: 1
+  leaderWorkerTemplate:
+    size: 1
+    workerTemplate:
+      metadata:
+        labels:
+          app.kubernetes.io/name: manifesto
+          app.kubernetes.io/instance: tms-t220400z-gemma4-watermark
+          llm-d.ai/owner: tms-t220400z
+          app.kubernetes.io/component: model-server
+          llm-d.ai/role: decode
+          llm-d.ai/inferenceServing: 'true'
+          llm-d.ai/model: gemma4-26b-a4b-it
+          llm-d.ai/deployment: aggregated
+      spec:
+        volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: 64Gi
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: synthid-bench-cache
+        - name: synthid-config
+          secret:
+            secretName: synthid-watermark-config
+        containers:
+        - name: vllm
+          image: quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be
+          command:
+          - /bin/bash
+          - -c
+          args:
+          - "set -euo pipefail\nLOG_DIR=/mnt/shared/tms-t220400z/logs/decode\nmkdir\
+            \ -p \"$LOG_DIR\"\nLOG_FILE=\"$LOG_DIR/${HOSTNAME}_$(date +%Y%m%d-%H%M%S).log\"\
+            \nexec > >(tee -a \"$LOG_FILE\") 2>&1\necho \"=== Pod $HOSTNAME started\
+            \ at $(date -Iseconds) ===\"\n\nCRASH_MARKER=\"${VLLM_CACHE_ROOT}/.manifesto-running-${HOSTNAME}-${MANIFESTO_POD_UID}\"\
+            \ncleanup_compile_caches() {\n  echo '=== Clearing JIT and compilation\
+            \ caches after crash ==='\n  if [ -n \"${VLLM_CACHE_ROOT:-}\" ] && [ -d\
+            \ \"$VLLM_CACHE_ROOT\" ]; then\n    find \"$VLLM_CACHE_ROOT\" -type d\
+            \ -name torch_compile_cache -prune -exec rm -rf -- {} + 2>/dev/null ||\
+            \ true\n  fi\n  for CACHE_PATH in \\\n    \"${FLASHINFER_CACHE_DIR:-}\"\
+            \ \\\n    \"${FLASH_ATTENTION_CUTE_DSL_CACHE_DIR:-}\" \\\n    \"${TRITON_CACHE_DIR:-}\"\
+            \ \\\n    \"${TORCHINDUCTOR_CACHE_DIR:-}\" \\\n    \"${TILELANG_CACHE_DIR:-}\"\
+            \n  do\n    case \"$CACHE_PATH\" in \"\"|/) continue ;; esac\n    rm -rf\
+            \ -- \"$CACHE_PATH\"\n  done\n}\non_exit() {\n  STATUS=$?\n  trap - EXIT\n\
+            \  set +e\n  if [ \"$STATUS\" -ne 0 ]; then\n    cleanup_compile_caches\n\
+            \  fi\n  rm -f -- \"$CRASH_MARKER\"\n  exit \"$STATUS\"\n}\nmkdir -p \"\
+            $VLLM_CACHE_ROOT\"\nif [ -e \"$CRASH_MARKER\" ]; then\n  echo '=== Previous\
+            \ container terminated without exiting; treating it as a crash ==='\n\
+            \  cleanup_compile_caches\nfi\ntouch \"$CRASH_MARKER\"\ntrap on_exit EXIT\n\
+            \nif [ -f /opt/vllm/bin/activate ]; then\n  source /opt/vllm/bin/activate\n\
+            fi\n\nvllm \\\n  serve \\\n  google/gemma-4-26B-A4B-it \\\n  --device-ids\
+            \ 0 \\\n  --port 8000 \\\n  --tensor-parallel-size 1 \\\n  --disable-access-log-for-endpoints\
+            \ /health,/v1/models,/metrics \\\n  --revision 4d7ae4984b7db7de8f8457170b3f1a419ee76d52\
+            \ \\\n  --max-model-len 16384 \\\n  --max-num-seqs 256 \\\n  --max-num-batched-tokens\
+            \ 32768 \\\n  --gpu-memory-utilization 0.90 \\\n  --enable-prefix-caching\
+            \ \\\n  --enable-force-include-usage \\\n  --logits-processors=vllm_synthid.processor:SynthIDTextLogitsProcessor"
+          env:
+          - name: HF_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: hf-secret
+                key: HF_TOKEN
+                optional: false
+          - name: FLASHINFER_CACHE_DIR
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/flashinfer
+          - name: FLASHINFER_WORKSPACE_BASE
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/flashinfer-workspace
+          - name: FLASH_ATTENTION_CUTE_DSL_CACHE_DIR
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/fa-cute-dsl
+          - name: FLASH_ATTENTION_CUTE_DSL_CACHE_ENABLED
+            value: '1'
+          - name: HF_HOME
+            value: /mnt/shared/hf_cache
+          - name: HOME
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/home
+          - name: SYNTHID_CONFIG
+            value: /etc/vllm-synthid/synthid.json
+          - name: TILELANG_CACHE_DIR
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/tilelang
+          - name: TORCHINDUCTOR_CACHE_DIR
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/torchinductor
+          - name: TQDM_DISABLE
+            value: '1'
+          - name: TRITON_CACHE_DIR
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/triton
+          - name: VLLM_CACHE_ROOT
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/vllm
+          - name: VLLM_JIT_MONITOR
+            value: '1'
+          - name: VLLM_LOGGING_LEVEL
+            value: DEBUG
+          - name: VLLM_NO_USAGE_STATS
+            value: '1'
+          - name: XDG_CACHE_HOME
+            value: /mnt/shared/tms-t220400z/jit-cache/h200/cu13/sha256-7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be/gemma4-watermark/xdg
+          - name: MANIFESTO_POD_UID
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.uid
+          ports:
+          - containerPort: 8000
+            name: vllm-0
+          resources:
+            requests:
+              cpu: '16'
+              memory: 128Gi
+              nvidia.com/gpu: '1'
+            limits:
+              memory: 128Gi
+              nvidia.com/gpu: '1'
+          volumeMounts:
+          - name: dshm
+            mountPath: /dev/shm
+          - name: shared-storage
+            mountPath: /mnt/shared
+          - name: synthid-config
+            mountPath: /etc/vllm-synthid
+            readOnly: true
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+          readinessProbe:
+            httpGet:
+              path: /v1/models
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 120
+        nodeSelector:
+          gpu.nvidia.com/class: H200
+        imagePullSecrets:
+        - name: quay-tms
+  rolloutStrategy:
+    type: RollingUpdate
+    rollingUpdateConfiguration:
+      maxUnavailable: 100%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tms-t220400z-gemma4-watermark-decode-svc
+  labels:
+    app.kubernetes.io/name: manifesto
+    app.kubernetes.io/instance: tms-t220400z-gemma4-watermark
+    llm-d.ai/owner: tms-t220400z
+    app.kubernetes.io/component: model-server
+    llm-d.ai/role: decode
+spec:
+  selector:
+    app.kubernetes.io/instance: tms-t220400z-gemma4-watermark
+    llm-d.ai/role: decode
+  ports:
+  - name: vllm-0
+    port: 8000
+    targetPort: 8000
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: tms-t220400z-gemma4-watermark-decode-svc-metrics
+  labels:
+    app.kubernetes.io/managed-by: vr-sweep
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: tms-t220400z-gemma4-watermark
+      llm-d.ai/role: decode
+  podMetricsEndpoints:
+  - port: vllm-0
+    path: /metrics
+    interval: 15s
+    relabelings:
+    - targetLabel: job
+      replacement: vllm-decode

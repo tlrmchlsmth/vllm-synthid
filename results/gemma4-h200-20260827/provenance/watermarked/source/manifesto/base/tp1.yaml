@@ -1,0 +1,25 @@
+release: synthid-gemma4-base
+topology: aggregated
+model:
+  id: google/gemma-4-26B-A4B-it
+  label: gemma4-26b-a4b-it
+  image: quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be
+routing: {kind: disabled}
+runtime: {sidecars: [], idle_shutdown: {enabled: false, timeout_minutes: 45}}
+roles:
+  - name: decode
+    workload: leaderworkerset
+    lws: {size: 1, replicas: 1}
+    parallelism: {tp: 1, dp: 1, ep: false, gpus: 1}
+    resources: {cpu: "16", memory: 128Gi, gpus: 1}
+    env:
+      VLLM_LOGGING_LEVEL: DEBUG
+      VLLM_JIT_MONITOR: "1"
+    vllm:
+      revision: 4d7ae4984b7db7de8f8457170b3f1a419ee76d52
+      max_model_len: 16384
+      max_num_seqs: 256
+      max_num_batched_tokens: 32768
+      gpu_memory_utilization: "0.90"
+      enable_prefix_caching: true
+      enable_force_include_usage: true

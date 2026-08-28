@@ -102,6 +102,12 @@ deployment distribution.
 - The Transformers processor is stateful, and state restoration currently
   relies on implementation details that may require updates across releases.
 
+## Benchmark results
+
+The [Gemma 4 H200 benchmark and evaluation results](results/gemma4-h200-20260827/README.md)
+contain the compact, human-readable results and their machine-readable source
+artifacts.
+
 ## Development
 
 ```bash

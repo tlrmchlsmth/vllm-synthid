@@ -1,0 +1,90 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nyann-corpus-t220400z-35f0e213
+  labels:
+    kueue.x-k8s.io/queue-name: synthid-h200
+    vr-sweep/corpus-sha256: 35f0e213ce091ed9b9af2a1f0755e9d39f9ccec34ab281cd4ca60d70f6479ba
+spec:
+  suspend: true
+  backoffLimit: 0
+  activeDeadlineSeconds: 3600
+  ttlSecondsAfterFinished: 604800
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: nyann-corpus
+    spec:
+      restartPolicy: Never
+      serviceAccountName: vr-sweep
+      imagePullSecrets:
+      - name: quay-tms
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      initContainers:
+      - name: download
+        image: docker.io/curlimages/curl@sha256:463eaf6072688fe96ac64fa623fe73e1dbe25d8ad6c34404a669ad3ce1f104b6
+        command:
+        - /bin/sh
+        - -ec
+        - "if [ -f \"$SOURCE_PATH\" ]; then\n  echo \"$SOURCE_SHA  $SOURCE_PATH\"\
+          \ | sha256sum -c -\n  exit 0\nfi\ntemporary=\"${SOURCE_PATH}.tmp\"\nrm -f\
+          \ \"$temporary\"\ncurl --fail --location --retry 5 --retry-all-errors --connect-timeout\
+          \ 30 --output \"$temporary\" \"$SOURCE_URL\"\necho \"$SOURCE_SHA  $temporary\"\
+          \ | sha256sum -c -\nmv \"$temporary\" \"$SOURCE_PATH\"\n"
+        env:
+        - name: SOURCE_URL
+          value: https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/192ab2185289094fc556ec8ce5ce1e8e587154ca/ShareGPT_V3_unfiltered_cleaned_split.json
+        - name: SOURCE_SHA
+          value: 35f0e213ce091ed9b9af2a1f0755e9d39f9ccec34ab281cd4ca60d70f6479ba4
+        - name: SOURCE_PATH
+          value: /datasets/sharegpt-192ab2185289.json
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: '1'
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          runAsGroup: 102
+          runAsUser: 101
+        volumeMounts:
+        - name: datasets
+          mountPath: /datasets
+      containers:
+      - name: convert
+        image: quay.io/tms/nyann-bench@sha256:bfd64754dc4caadf20f249e218e91eb662249c12ca03c6bae9b51ec686ed1290
+        args:
+        - corpus
+        - --format
+        - sharegpt
+        - --input
+        - /datasets/sharegpt-192ab2185289.json
+        - --output
+        - /datasets/sharegpt-192ab2185289.txt
+        resources:
+          requests:
+            cpu: '2'
+            memory: 2Gi
+          limits:
+            cpu: '8'
+            memory: 8Gi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+        volumeMounts:
+        - name: datasets
+          mountPath: /datasets
+      volumes:
+      - name: datasets
+        persistentVolumeClaim:
+          claimName: synthid-bench-cache

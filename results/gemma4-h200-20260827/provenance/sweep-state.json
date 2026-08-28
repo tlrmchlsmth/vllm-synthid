@@ -1,0 +1,243 @@
+{
+  "run_id": "synthid-gemma4-v028-r2-20260827t220400z",
+  "catalog_digest": "cc5fc3b820414e1b08deaa392d8bb72b6fef4dcc6051ad494f4c6e3db1d17f71",
+  "created_at": "2026-08-27T22:04:19.751899Z",
+  "updated_at": "2026-08-27T23:16:19.375551Z",
+  "status": "succeeded",
+  "cases": [
+    {
+      "case_id": "gemma4-plain",
+      "status": "succeeded",
+      "completed_steps": [
+        "render",
+        "deploy",
+        "ready",
+        "validate",
+        "gsm8k",
+        "watermark_detection",
+        "nyann",
+        "metrics",
+        "teardown",
+        "forward"
+      ],
+      "steps": [
+        {
+          "name": "render",
+          "started_at": "2026-08-27T22:04:19.771096Z",
+          "completed_at": "2026-08-27T22:04:20.272894Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "deploy",
+          "started_at": "2026-08-27T22:04:20.280448Z",
+          "completed_at": "2026-08-27T22:04:20.917016Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "ready",
+          "started_at": "2026-08-27T22:04:20.924793Z",
+          "completed_at": "2026-08-27T22:08:52.825783Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "validate",
+          "started_at": "2026-08-27T22:08:52.834264Z",
+          "completed_at": "2026-08-27T22:08:53.137090Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "gsm8k",
+          "started_at": "2026-08-27T22:08:53.144660Z",
+          "completed_at": "2026-08-27T22:12:53.418358Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "watermark_detection",
+          "started_at": "2026-08-27T22:12:53.426906Z",
+          "completed_at": "2026-08-27T22:14:14.240379Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "nyann",
+          "started_at": "2026-08-27T22:14:14.250543Z",
+          "completed_at": "2026-08-27T22:33:51.842431Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "metrics",
+          "started_at": "2026-08-27T22:33:51.852246Z",
+          "completed_at": "2026-08-27T22:33:51.977388Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "teardown",
+          "started_at": "2026-08-27T22:33:51.985012Z",
+          "completed_at": "2026-08-27T22:33:52.458615Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "forward",
+          "started_at": "2026-08-27T22:33:52.466199Z",
+          "completed_at": "2026-08-27T22:38:32.745896Z",
+          "status": "succeeded",
+          "detail": null
+        }
+      ],
+      "error": null,
+      "artifacts": {
+        "rendered_manifest": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/rendered.yaml",
+        "resolved_manifesto": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/source/manifesto/cases/plain.yaml",
+        "render_summary": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/render-summary.json",
+        "server_dry_run": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/server-dry-run.txt",
+        "apply": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/apply.txt",
+        "ready_snapshot": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/ready.json",
+        "target_service": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/target-service.json",
+        "placement": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/placement.json",
+        "runtime_evidence": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/runtime-evidence.log",
+        "metrics_targets": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/metrics-targets.json",
+        "measurement_start": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/measurement-start.json",
+        "gsm8k_report": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/gsm8k-report.json",
+        "watermark_generations": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/watermark-generations.json",
+        "watermark_detection": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/watermark-detection.json",
+        "nyann_corpus_job": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/nyann-corpus-job.yaml",
+        "nyann_job": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/nyann-job.yaml",
+        "nyann_log": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/nyann.log",
+        "prometheus_window": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/prometheus-window.json",
+        "prometheus_vllm": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/prometheus-vllm.json",
+        "prometheus_dcgm": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/prometheus-dcgm.json",
+        "kueue_snapshot": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/kueue-workloads-before-teardown.json",
+        "teardown": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/teardown.txt",
+        "forward_plan": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/forward-plan.json",
+        "forward_status": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/forward-status.json",
+        "forward_artifacts": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-plain/forward-artifacts.json"
+      }
+    },
+    {
+      "case_id": "gemma4-watermark",
+      "status": "succeeded",
+      "completed_steps": [
+        "render",
+        "deploy",
+        "ready",
+        "validate",
+        "gsm8k",
+        "watermark_detection",
+        "nyann",
+        "metrics",
+        "teardown",
+        "forward"
+      ],
+      "steps": [
+        {
+          "name": "render",
+          "started_at": "2026-08-27T22:38:32.769732Z",
+          "completed_at": "2026-08-27T22:38:33.267710Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "deploy",
+          "started_at": "2026-08-27T22:38:33.274458Z",
+          "completed_at": "2026-08-27T22:38:33.865611Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "ready",
+          "started_at": "2026-08-27T22:38:33.871783Z",
+          "completed_at": "2026-08-27T22:43:05.754034Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "validate",
+          "started_at": "2026-08-27T22:43:05.762515Z",
+          "completed_at": "2026-08-27T22:43:05.983165Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "gsm8k",
+          "started_at": "2026-08-27T22:43:05.990279Z",
+          "completed_at": "2026-08-27T22:50:26.437351Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "watermark_detection",
+          "started_at": "2026-08-27T22:50:26.446788Z",
+          "completed_at": "2026-08-27T22:52:20.977924Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "nyann",
+          "started_at": "2026-08-27T22:52:20.986008Z",
+          "completed_at": "2026-08-27T23:11:38.419045Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "metrics",
+          "started_at": "2026-08-27T23:11:38.427769Z",
+          "completed_at": "2026-08-27T23:11:38.540476Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "teardown",
+          "started_at": "2026-08-27T23:11:38.549515Z",
+          "completed_at": "2026-08-27T23:11:39.046535Z",
+          "status": "succeeded",
+          "detail": null
+        },
+        {
+          "name": "forward",
+          "started_at": "2026-08-27T23:11:39.054219Z",
+          "completed_at": "2026-08-27T23:16:19.358544Z",
+          "status": "succeeded",
+          "detail": null
+        }
+      ],
+      "error": null,
+      "artifacts": {
+        "rendered_manifest": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/rendered.yaml",
+        "resolved_manifesto": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/source/manifesto/cases/watermark.yaml",
+        "render_summary": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/render-summary.json",
+        "server_dry_run": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/server-dry-run.txt",
+        "apply": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/apply.txt",
+        "ready_snapshot": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/ready.json",
+        "target_service": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/target-service.json",
+        "placement": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/placement.json",
+        "runtime_evidence": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/runtime-evidence.log",
+        "metrics_targets": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/metrics-targets.json",
+        "measurement_start": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/measurement-start.json",
+        "gsm8k_report": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/gsm8k-report.json",
+        "gsm8k_comparison": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/gsm8k-comparison.json",
+        "watermark_generations": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/watermark-generations.json",
+        "watermark_detection": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/watermark-detection.json",
+        "watermark_detection_comparison": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/watermark-detection-comparison.json",
+        "nyann_corpus_job": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/nyann-corpus-job.yaml",
+        "nyann_job": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/nyann-job.yaml",
+        "nyann_log": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/nyann.log",
+        "prometheus_window": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/prometheus-window.json",
+        "prometheus_vllm": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/prometheus-vllm.json",
+        "prometheus_dcgm": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/prometheus-dcgm.json",
+        "kueue_snapshot": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/kueue-workloads-before-teardown.json",
+        "teardown": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/teardown.txt",
+        "forward_plan": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/forward-plan.json",
+        "forward_status": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/forward-status.json",
+        "forward_artifacts": "/results/sweeps/synthid-gemma4-v028-r2-20260827t220400z/cases/gemma4-watermark/forward-artifacts.json"
+      }
+    }
+  ]
+}

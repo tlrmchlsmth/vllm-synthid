@@ -1,0 +1,19 @@
+{
+  "baseline_case": "gemma4-plain",
+  "calibration_quantile": 0.95,
+  "calibration_samples": 32,
+  "evaluation_samples_per_class": 32,
+  "false_positive_rate": 0.03125,
+  "passed": true,
+  "plain_mean_score": 0.4994673142209649,
+  "requirements": {
+    "maximum_fpr": 0.1,
+    "minimum_auc": 0.9,
+    "minimum_tpr": 0.8
+  },
+  "roc_auc": 0.998046875,
+  "threshold": 0.5184262990951538,
+  "true_positive_rate": 1.0,
+  "watermarked_case": "gemma4-watermark",
+  "watermarked_mean_score": 0.5395530350506306
+}

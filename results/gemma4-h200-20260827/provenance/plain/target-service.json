@@ -1,0 +1,27 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "labels": {
+      "app.kubernetes.io/component": "model-server",
+      "app.kubernetes.io/instance": "tms-t220400z-gemma4-plain",
+      "app.kubernetes.io/name": "manifesto",
+      "llm-d.ai/owner": "tms-t220400z",
+      "llm-d.ai/role": "decode"
+    },
+    "name": "tms-t220400z-gemma4-plain-decode-svc"
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "vllm-0",
+        "port": 8000,
+        "targetPort": 8000
+      }
+    ],
+    "selector": {
+      "app.kubernetes.io/instance": "tms-t220400z-gemma4-plain",
+      "llm-d.ai/role": "decode"
+    }
+  }
+}

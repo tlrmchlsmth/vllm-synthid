@@ -1,0 +1,27 @@
+{
+  "schema_version": "1",
+  "job_id": "6702f82fd8e6ab821c008677",
+  "generated_at": "2026-08-28T00:02:31.840Z",
+  "artifacts": [
+    {
+      "path": "pod.yaml",
+      "size_bytes": 5021,
+      "sha256": "51fba87dc8161a11e15e688744aa2aca8720c623d2bd28bced206ef80921ef8d"
+    },
+    {
+      "path": "resolved-spec.json",
+      "size_bytes": 3201,
+      "sha256": "53d5f2b750c92d700f1b03d7ab6e0f71349f631c3d6854eb2d4b45d97a53ce69"
+    },
+    {
+      "path": "spec.yaml",
+      "size_bytes": 2289,
+      "sha256": "4be091b917bfb6cfce166657093588eff4df9c0be47da82433aa4f115ad67192"
+    },
+    {
+      "path": "worker.pyz",
+      "size_bytes": 59384,
+      "sha256": "41c19ef9b96acff0cb6c741e3c24d3f1cb5f99c8f6deff06591fa61f2e984217"
+    }
+  ]
+}

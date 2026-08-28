@@ -1,0 +1,99 @@
+apiVersion: vr-sweep/v1alpha1
+kind: ModelSweep
+name: synthid-gemma4-h200
+owner: tms
+cluster:
+  context: in-cluster
+  namespace: tysmith-dev
+  local_queue: synthid-h200
+  manifesto_profile: manifesto/cluster-waldorf-h200.yaml
+  accelerator: h200
+  max_gpus: 1
+  result_root: /results/sweeps
+  target_alias: gemma4-synthid-vllm
+  image_pull_secrets: [quay-tms]
+services:
+  lm_eval_url: http://synthid-lm-eval:8080
+  lm_eval_target: gemma4-synthid
+  lm_eval_token_file: /var/run/secrets/nm-hard-tools/lm-eval/token
+  forward_url: http://vllm-forward-bench.tysmith-vllm-forward-pr13.svc:8000
+  prometheus_url: http://prometheus-kube-prometheus-prometheus.monitoring.svc:9090
+  nyann_image: quay.io/tms/nyann-bench@sha256:bfd64754dc4caadf20f249e218e91eb662249c12ca03c6bae9b51ec686ed1290
+  nyann_service_account: vr-sweep
+  datasets_claim: synthid-bench-cache
+  datasets_mount: /datasets
+  results_claim: synthid-bench-results
+  results_mount: /results
+measurements:
+  gsm8k:
+    num_fewshot: 5
+    limit: 1319
+    generation_limit: 512
+    minimum_relative_accuracy: 0.98
+    timeout_seconds: 14400
+  watermark_detection:
+    samples: 64
+    max_tokens: 256
+    temperature: 0.8
+    calibration_fraction: 0.5
+    calibration_quantile: 0.95
+    minimum_auc: 0.9
+    minimum_tpr: 0.8
+    maximum_fpr: 0.1
+    timeout_seconds: 3600
+  nyann:
+    isl: 8192
+    osl: 1024
+    turns: 1
+    corpus_path: /datasets/sharegpt-192ab2185289.txt
+    corpus_source_url: https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/192ab2185289094fc556ec8ce5ce1e8e587154ca/ShareGPT_V3_unfiltered_cleaned_split.json
+    corpus_source_sha256: 35f0e213ce091ed9b9af2a1f0755e9d39f9ccec34ab281cd4ca60d70f6479ba4
+    corpus_download_image: docker.io/curlimages/curl@sha256:463eaf6072688fe96ac64fa623fe73e1dbe25d8ad6c34404a669ad3ce1f104b6
+    warmup: 1m
+    stage_duration: 2m
+    concurrencies: [1, 2, 4, 8, 16, 32, 64, 128, 256]
+    waiting_requests_p50: 32
+    ttft_p99: 2s
+    kv_cache_usage: 0.95
+    preemptions: 1
+    workers: 1
+    timeout_seconds: 10800
+  forward:
+    prefill_token_counts: [512, 1024, 2048, 4096, 8192]
+    decode_batch_sizes: [1, 2, 4, 8, 16, 32]
+    decode_previous_tokens:
+      - {tokens: 512, weight: 1}
+      - {tokens: 2048, weight: 2}
+      - {tokens: 8192, weight: 1}
+    warmup_iterations: 3
+    iterations: 10
+    profile_iterations: 1
+    timeout_seconds: 7200
+  prometheus:
+    enabled: true
+    step_seconds: 15
+cases:
+  - id: gemma4-plain
+    manifesto: manifesto/cases/plain.yaml
+    model: google/gemma-4-26B-A4B-it
+    model_revision: 4d7ae4984b7db7de8f8457170b3f1a419ee76d52
+    expected: {precision: bf16, speculation: none, metrics_targets: 1}
+    lm_eval_target: gemma4-synthid-plain
+    forward: &plain-forward
+      image: "quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be"
+      tensor_parallel_size: 1
+      gpu_count: 1
+      max_model_len: 16384
+  - id: gemma4-watermark
+    manifesto: manifesto/cases/watermark.yaml
+    model: google/gemma-4-26B-A4B-it
+    model_revision: 4d7ae4984b7db7de8f8457170b3f1a419ee76d52
+    pair: gemma4-plain
+    expected: {precision: bf16, speculation: none, metrics_targets: 1}
+    lm_eval_target: gemma4-synthid-watermark
+    forward:
+      <<: *plain-forward
+      runtime_profile: synthid
+      engine_args:
+        logits_processors:
+          - vllm_synthid.processor:SynthIDTextLogitsProcessor
