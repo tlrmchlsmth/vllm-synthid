@@ -1,7 +1,7 @@
 # Gemma 4 forward-pass runtime matrix
 
 This directory contains the corrected H200 forward-pass benchmark matrix for
-`google/gemma-4-26B-A4B-it` on vLLM 0.28.0. All four runs use synchronous
+`google/gemma-4-26B-A4B-it` on vLLM 0.28.0. All five runs use synchronous
 synthetic execution. Every representative decode and prefill profile contains
 real GPU events; the service's zero-GPU-work validity gate passed.
 
@@ -13,11 +13,19 @@ real GPU events; the service's zero-GPU-work validity gate passed.
 | SynthID | `d331a9a53768d897a7614039` | MRV1 | 13.48 ms | 591.1 tok/s | 700 |
 | Plain | `46558510f068084b37835c4a` | MRV2 | 7.36 ms | 1,087.1 tok/s | 675 |
 | MTP, 3 draft tokens | `3b3a0f539a7bd46e719faab8` | MRV2 | 9.71 ms | 3,255.5 verification tok/s | 675 |
+| MTP, 3 synthetic draft tokens | `d414c0314efc28b6d7754b45` | MRV1 | 10.32 ms | 3,101.0 verification tok/s | 709 |
 
 MTP throughput counts four target-side scheduled tokens per request step: one
 ordinary target token plus three speculative verification tokens. It is not
 accepted output-token throughput and should not be compared directly with the
 other rows.
+
+MRV2 chains candidates returned by the model runner. MRV1's draft-return RPC is
+empty under the synthetic scheduler, so its adapter supplies deterministic
+valid candidate tokens and records
+`speculative_draft_source=deterministic-synthetic`. The measured forward still
+executes target verification and the MTP proposer, but the result intentionally
+does not represent acceptance behavior.
 
 SynthID plus MTP is not included because vLLM 0.28 rejects the combination of
 custom logits processors and speculative decoding before the benchmark driver
@@ -54,8 +62,10 @@ not explained by comparing MRV1 with MRV2.
 - Kueue LocalQueue: `synthid-h200`
 - Model revision: `4d7ae4984b7db7de8f8457170b3f1a419ee76d52`
 - vLLM image: `quay.io/tms/vllm-synthid@sha256:7cfdbe8550a32173793aa980cda20358403485bbe356d4154e80d514d4c353be`
-- Benchmark worker image: `quay.io/tms/vllm-forward-bench-plugin@sha256:2aec33ebd414640c7a0ade0fe81f1aa28254abaa0f35625a1e01f10623caa557`
-- Worker bundle SHA-256: `e66820790b1c7f3d9ab2e1785c061ae97731e6b7415b841e00ba64b0e694f888`
+- Baseline benchmark worker image: `quay.io/tms/vllm-forward-bench-plugin@sha256:2aec33ebd414640c7a0ade0fe81f1aa28254abaa0f35625a1e01f10623caa557`
+- Baseline worker bundle SHA-256: `e66820790b1c7f3d9ab2e1785c061ae97731e6b7415b841e00ba64b0e694f888`
+- MRV1 MTP worker image: `quay.io/tms/vllm-forward-bench-plugin@sha256:a825baf134507cf78d05b7b647f6981e3f635b0986cafdd465066d0edce11961`
+- MRV1 MTP worker bundle SHA-256: `82e66ce491d8239469159ce778d75822d8ef429c5160531da47251461c5a0783`
 - Benchmark-service change: [PR #27](https://github.com/tlrmchlsmth/vllm-forward-pass-benchmark-service/pull/27)
 
 Each configuration directory contains the service-produced HTML, Markdown, and
